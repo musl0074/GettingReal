@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingReal", "GettingReal\GettingReal.csproj", "{FC7E4CA6-0354-4F31-8B56-D6E111B56AD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CultureTravelLibrary", "CultureTravelLibrary\CultureTravelLibrary.csproj", "{4563B984-8DCC-470D-A47B-B876C306C0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{2116BB05-191B-41E7-BF4D-B40A4919233E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FC7E4CA6-0354-4F31-8B56-D6E111B56AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC7E4CA6-0354-4F31-8B56-D6E111B56AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC7E4CA6-0354-4F31-8B56-D6E111B56AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4563B984-8DCC-470D-A47B-B876C306C0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4563B984-8DCC-470D-A47B-B876C306C0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4563B984-8DCC-470D-A47B-B876C306C0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4563B984-8DCC-470D-A47B-B876C306C0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2116BB05-191B-41E7-BF4D-B40A4919233E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2116BB05-191B-41E7-BF4D-B40A4919233E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2116BB05-191B-41E7-BF4D-B40A4919233E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2116BB05-191B-41E7-BF4D-B40A4919233E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
