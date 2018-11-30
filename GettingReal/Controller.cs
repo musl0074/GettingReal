@@ -25,6 +25,10 @@ namespace GettingReal
             {
                 t.CreateTripCustomer(name, plusOne, address, zipCode, city, phoneNumber, email, roomType, airport);
             }
+            else
+            {
+                Console.WriteLine("Den angivet rejse eksistere ikke");
+            }
         }
 
         public TripRepo GetTripRepo()
