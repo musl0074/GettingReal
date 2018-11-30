@@ -12,12 +12,21 @@ namespace CultureTravelLibrary
 
         public void CreateTrip(string tripName, string tripDate)
         {
-            Trip t = new Trip(tripName, tripDate);
 
-            // Eksistere den allerede?
-            // Opdater fra SD'en
+            foreach (Trip trip in trips)
+            {
+                if (trip.TripName != tripName)
+                {
+                    Trip t = new Trip(tripName, tripDate);
+                    trips.Add(t);
+                }
+                else
+                {
+                    Console.WriteLine("Rejsen eksistere allerede");
+                }
+            }
 
-            trips.Add(t);
+            
 
            
         }

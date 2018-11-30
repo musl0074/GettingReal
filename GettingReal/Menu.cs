@@ -63,7 +63,7 @@ namespace GettingReal
         {
             Console.Write("Indtast navn på deltager: ");
             string name = Console.ReadLine();
-            Console.WriteLine("Indtast ???? ledsager ????: ");
+            Console.WriteLine("Indtast navn på ledsager: ");
             string plusOne = Console.ReadLine();
             Console.Write("Indtast addresse: ");
             string address = Console.ReadLine();
@@ -81,7 +81,10 @@ namespace GettingReal
             string airport = Console.ReadLine();
             Console.Write("Indtast navn på eksisterende rejse: ");
             string tripName = Console.ReadLine();
-            
+
+            control.CreateTripCustomer(name, plusOne, address,
+                                       zipCode, city, phoneNumber, 
+                                       email, roomType, airport, tripName);
         }
     }
 }

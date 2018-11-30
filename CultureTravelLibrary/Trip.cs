@@ -23,7 +23,21 @@ namespace CultureTravelLibrary
         public void CreateTripCustomer (string name, string plusOne, string address, string zipCode, string city,
                                        string phoneNumber, string email, string roomType, string airport)
         {
-            // Implementer fra SD'en
+            foreach (TripCustomer tripCustomer in tripCustomers)
+            {
+                if (tripCustomer.PhoneNumber != phoneNumber)
+                {
+                    TripCustomer c = new TripCustomer(name, plusOne, address,
+                                                      zipCode, city, phoneNumber,
+                                                      email, roomType, airport);
+
+                    Console.WriteLine("Den rejsende er nu registeret til rejsen");
+                }
+                else
+                {
+                    Console.WriteLine("Den rejsende er allerede registeret på rejsen");
+                }
+            }
         }
 
     }
