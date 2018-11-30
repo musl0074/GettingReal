@@ -8,17 +8,17 @@ namespace CultureTravelLibrary
 {
     public class TripCustomer
     {
-        // Properties
-        public string Name { get { return Name; } set { } }
-        public string PlusOne { get { return PlusOne; } set { } }
-        public string Address { get { return Address; } set { } }
-        public string ZipCode { get { return ZipCode; } set { } }
-        public string City { get { return City; } set { } }
-        public string PhoneNumber { get { return PhoneNumber; } set { } }
-        public string Email { get { return Email; } set { } }
-        public string RoomType { get { return RoomType; } set { } }
-        public string Airport { get { return Airport; } set { } }
-
+        #region Properties
+        public string Name { get; set; }
+        public string PlusOne { get; set; }
+        public string Address { get; set; }
+        public string ZipCode { get; set; }
+        public string City { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string RoomType { get; set; }
+        public string Airport { get; set; }
+        #endregion
 
         // Constructor -- applies parameters to the properties
         public TripCustomer (string name, string plusOne, string address, string zipCode, string city,

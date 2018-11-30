@@ -27,7 +27,7 @@ namespace GettingReal
             }
             else
             {
-                Console.WriteLine("Den angivet rejse eksistere ikke");
+                Console.WriteLine("Den angivet rejse eksisterer ikke" + "\n");
             }
         }
 

@@ -23,22 +23,38 @@ namespace CultureTravelLibrary
         public void CreateTripCustomer (string name, string plusOne, string address, string zipCode, string city,
                                        string phoneNumber, string email, string roomType, string airport)
         {
-            foreach (TripCustomer tripCustomer in tripCustomers)
+            // If it is the first to be added
+            if (tripCustomers.Count == 0)
             {
-                if (tripCustomer.PhoneNumber != phoneNumber)
-                {
-                    TripCustomer c = new TripCustomer(name, plusOne, address,
-                                                      zipCode, city, phoneNumber,
-                                                      email, roomType, airport);
+                TripCustomer c = new TripCustomer(name, plusOne, address,
+                                                  zipCode, city, phoneNumber,
+                                                  email, roomType, airport);
+                tripCustomers.Add(c);
 
-                    Console.WriteLine("Den rejsende er nu registeret til rejsen");
-                }
-                else
+                Console.WriteLine("Den rejsende er nu registeret til rejsen" + "\n");
+                return; 
+            }
+
+            // Check if customer already exists
+            bool customerExists = false;
+            for (int i = 0; i < tripCustomers.Count; i++)
+            {
+                if (tripCustomers[i].PhoneNumber == phoneNumber)
                 {
-                    Console.WriteLine("Den rejsende er allerede registeret på rejsen");
+                    customerExists = true;
+                    Console.WriteLine("Den rejsende er allerede registeret til rejsen" + "\n");
                 }
             }
-        }
 
+            if (!customerExists)
+            {
+                TripCustomer c = new TripCustomer(name, plusOne, address,
+                                                  zipCode, city, phoneNumber,
+                                                  email, roomType, airport);
+                tripCustomers.Add(c);
+
+                Console.WriteLine("Den rejsende er nu registeret til rejsen" + "\n");
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace GettingReal
             bool running = true;
             do
             {
+                Console.Clear();
                 ShowMenu();
                 string choice = GetUserChoice();
                 switch (choice)
@@ -22,9 +23,11 @@ namespace GettingReal
                         running = false;
                         break;
                     case "1":
+                        Console.Clear();
                         CreateTrip();
                         break;
                     case "2":
+                        Console.Clear();
                         CreateTripCustomer();                       
                         break;
                     default:
@@ -55,11 +58,14 @@ namespace GettingReal
 
         private void CreateTrip()
         {
-            Console.WriteLine("Indtast navn på rejse");
+            Console.Write("Indtast navn på rejse: ");
             string tripName = Console.ReadLine();
-            Console.WriteLine("Indtast dato for rejsen");
+            Console.Write("Indtast dato for rejsen: ");
             string tripDate = Console.ReadLine();
             control.CreateTrip(tripName, tripDate);
+
+            Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen");
+            Console.Read();
         }
 
         private void CreateTripCustomer()
@@ -88,13 +94,9 @@ namespace GettingReal
             control.CreateTripCustomer(name, plusOne, address,
                                        zipCode, city, phoneNumber, 
                                        email, roomType, airport, tripName);
-            Console.WriteLine();
-            Console.WriteLine("Data er nu gemt i databasen");
-            Console.WriteLine();
-            Console.WriteLine("Tryk Enter for at returnere til menuen");
-            Console.ReadLine();
-            Console.Clear();
 
+            Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen");
+            Console.Read();
         }
     }
 }

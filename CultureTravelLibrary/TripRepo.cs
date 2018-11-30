@@ -8,27 +8,44 @@ namespace CultureTravelLibrary
 {
     public class TripRepo
     {
-        private List<Trip> trips = new List<Trip>();
+        private List<Trip> trips = new List<Trip>(1);
 
         public void CreateTrip(string tripName, string tripDate)
         {
-
-            foreach (Trip trip in trips)
+            // If this is the first trip
+            if (trips.Count == 0)
             {
-                if (trip.TripName != tripName)
+                Trip t = new Trip(tripName, tripDate);
+                trips.Add(t);
+                Console.WriteLine("Rejsen er nu oprettet" + "\n");
+                return;
+            }
+
+            // Check if trip already exists
+            bool tripExists = false;
+            for (int i = 0; i < trips.Count; i++)
+            {
+                if (trips[i].TripName == tripName)
                 {
-                    Trip t = new Trip(tripName, tripDate);
-                    trips.Add(t);
-                }
-                else
-                {
-                    Console.WriteLine("Rejsen eksistere allerede");
+                    tripExists = true;
+                    break;
                 }
             }
 
-            
+            // If it doesnt exist, create the trip
+            if (!tripExists)
+            {
+                Trip t = new Trip(tripName, tripDate);
+                trips.Add(t);
+                Console.WriteLine("Rejsen er nu oprettet" + "\n");
+            }
 
-           
+            // If it does exists, respond with error message
+            if (tripExists)
+            {
+                Console.WriteLine("Rejsen eksisterer allerede" + "\n");
+            }
+               
         }
 
         public List<Trip> ShowTrips ()
