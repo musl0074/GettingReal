@@ -24,6 +24,9 @@ namespace GettingReal
                     case "1":
                         CreateTrip();
                         break;
+                    case "2":
+                        CreateTripCustomer();                       
+                        break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.ReadLine();
@@ -37,7 +40,7 @@ namespace GettingReal
             Console.WriteLine("Kulturrejser");
             Console.WriteLine();
             Console.WriteLine("1. Opret kulturrejse");
-            Console.WriteLine("");
+            Console.WriteLine("2. Opret kunde til rejse");
             Console.WriteLine("0. Exit");
         }
 
@@ -63,7 +66,7 @@ namespace GettingReal
         {
             Console.Write("Indtast navn på deltager: ");
             string name = Console.ReadLine();
-            Console.WriteLine("Indtast navn på ledsager: ");
+            Console.Write("Indtast navn på ledsager: ");
             string plusOne = Console.ReadLine();
             Console.Write("Indtast addresse: ");
             string address = Console.ReadLine();
@@ -80,11 +83,18 @@ namespace GettingReal
             Console.Write("Indtast lufthavn: ");
             string airport = Console.ReadLine();
             Console.Write("Indtast navn på eksisterende rejse: ");
-            string tripName = Console.ReadLine();
-
+            string tripName = Console.ReadLine();         
+            
             control.CreateTripCustomer(name, plusOne, address,
                                        zipCode, city, phoneNumber, 
                                        email, roomType, airport, tripName);
+            Console.WriteLine();
+            Console.WriteLine("Data er nu gemt i databasen");
+            Console.WriteLine();
+            Console.WriteLine("Tryk Enter for at returnere til menuen");
+            Console.ReadLine();
+            Console.Clear();
+
         }
     }
 }
