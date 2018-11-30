@@ -16,9 +16,19 @@ namespace GettingReal
             tripRepo.CreateTrip(tripName, tripDate);
         }
 
+        public void CreateTripCustomer(string name, string plusOne, string address, string zipCode, string city,
+                                       string phoneNumber, string email, string roomType, string airport, string tripName)
+        {
+            // Implementer fra SD'en
+        }
+
         public TripRepo GetTripRepo()
         {
             return tripRepo;
         }
+
+
+        
+
     }
 }

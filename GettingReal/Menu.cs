@@ -58,5 +58,30 @@ namespace GettingReal
             string tripDate = Console.ReadLine();
             control.CreateTrip(tripName, tripDate);
         }
+
+        private void CreateTripCustomer()
+        {
+            Console.Write("Indtast navn på deltager: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Indtast ???? ledsager ????: ");
+            string plusOne = Console.ReadLine();
+            Console.Write("Indtast addresse: ");
+            string address = Console.ReadLine();
+            Console.Write("Indtast postnummer: ");
+            string zipCode = Console.ReadLine();
+            Console.Write("Indtast by: ");
+            string city = Console.ReadLine();
+            Console.Write("Indtast telefonnummer: ");
+            string phoneNumber = Console.ReadLine();
+            Console.Write("Indtast email: ");
+            string email = Console.ReadLine();
+            Console.Write("Indtast type rum: ");
+            string roomType = Console.ReadLine();
+            Console.Write("Indtast lufthavn: ");
+            string airport = Console.ReadLine();
+            Console.Write("Indtast navn på eksisterende rejse: ");
+            string tripName = Console.ReadLine();
+            
+        }
     }
 }
