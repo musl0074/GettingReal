@@ -27,6 +27,31 @@ namespace UnitTestProject1
             controller.CreateTrip("Holland", "05-02-2018");
             Assert.AreEqual(3, tripRepo.ShowTrips().Count);
         }
+        
+        [TestMethod]
+        public void TestCreateTripCustomer ()
+        {
+            controller.CreateTrip("Denmark", "03-08-1943");
+            controller.CreateTripCustomer("Hans", "", "", "", "", "", "", "", "", "Denmark");
+            Trip t = tripRepo.GetTrip("Denmark");
+            var tripCustomers = t.GetTripCustomers();
+
+            Assert.AreEqual(1, tripCustomers.Count);
+        }
+
+        [TestMethod]
+        public void TestTripCustomerName ()
+        {
+            controller.CreateTrip("Denmark", "03-08-1943");
+            controller.CreateTripCustomer("Hans", "", "", "", "", "", "", "", "", "Denmark");
+            Trip t = tripRepo.GetTrip("Denmark");
+            var tripCustomers = t.GetTripCustomers();
+            TripCustomer c = tripCustomers[0];
+
+            Assert.AreEqual("Hans", c.Name);
+        }
+
+
     }
    
 }

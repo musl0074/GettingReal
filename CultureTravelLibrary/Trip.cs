@@ -20,6 +20,11 @@ namespace CultureTravelLibrary
         }
         
 
+        public List<TripCustomer> GetTripCustomers ()
+        {
+            return tripCustomers;
+        }
+
         public void CreateTripCustomer (string name, string plusOne, string address, string zipCode, string city,
                                        string phoneNumber, string email, string roomType, string airport)
         {
