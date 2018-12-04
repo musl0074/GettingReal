@@ -70,12 +70,16 @@ namespace GettingReal
 
         private void CreateTripCustomer()
         {
-            Console.Write("Indtast navn på deltager: ");
-            string name = Console.ReadLine();
+            Console.Write("Indtast fornavn på deltager: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Indtast efternavn på deltager: ");
+            string lastName = Console.ReadLine();
             Console.Write("Indtast navn på ledsager: ");
             string plusOne = Console.ReadLine();
-            Console.Write("Indtast addresse: ");
-            string address = Console.ReadLine();
+            Console.Write("Indtast gadenavn: ");
+            string streetName = Console.ReadLine();
+            Console.Write("Indtast gadenummer: ");
+            string streetNumber = Console.ReadLine();
             Console.Write("Indtast postnummer: ");
             string zipCode = Console.ReadLine();
             Console.Write("Indtast by: ");
@@ -91,8 +95,8 @@ namespace GettingReal
             Console.Write("Indtast navn på eksisterende rejse: ");
             string tripName = Console.ReadLine();         
             
-            control.CreateTripCustomer(name, plusOne, address,
-                                       zipCode, city, phoneNumber, 
+            control.CreateTripCustomer(firstName, lastName, plusOne, streetName,
+                                       streetNumber, zipCode, city, phoneNumber, 
                                        email, roomType, airport, tripName);
 
             Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen");

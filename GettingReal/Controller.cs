@@ -16,14 +16,14 @@ namespace GettingReal
             tripRepo.CreateTrip(tripName, tripDate);
         }
 
-        public void CreateTripCustomer(string name, string plusOne, string address, string zipCode, string city,
+        public void CreateTripCustomer(string firstName, string lastName, string plusOne, string streetName, string streetNumber, string zipCode, string city,
                                        string phoneNumber, string email, string roomType, string airport, string tripName)
         {
             Trip t = tripRepo.GetTrip(tripName);
 
             if (t != null)
             {
-                t.CreateTripCustomer(name, plusOne, address, zipCode, city, phoneNumber, email, roomType, airport);
+                t.CreateTripCustomer(firstName, lastName, plusOne, streetName, streetNumber, zipCode, city, phoneNumber, email, roomType, airport);
             }
             else
             {

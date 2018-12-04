@@ -25,13 +25,13 @@ namespace CultureTravelLibrary
             return tripCustomers;
         }
 
-        public void CreateTripCustomer (string name, string plusOne, string address, string zipCode, string city,
+        public void CreateTripCustomer (string firstName, string lastName, string plusOne, string streetName, string streetNumber, string zipCode, string city,
                                        string phoneNumber, string email, string roomType, string airport)
         {
             // If it is the first to be added
             if (tripCustomers.Count == 0)
             {
-                TripCustomer c = new TripCustomer(name, plusOne, address,
+                TripCustomer c = new TripCustomer(firstName, lastName, plusOne, streetName, streetNumber,
                                                   zipCode, city, phoneNumber,
                                                   email, roomType, airport);
                 tripCustomers.Add(c);
@@ -53,7 +53,7 @@ namespace CultureTravelLibrary
 
             if (!customerExists)
             {
-                TripCustomer c = new TripCustomer(name, plusOne, address,
+                TripCustomer c = new TripCustomer(firstName, lastName, plusOne, streetName, streetNumber,
                                                   zipCode, city, phoneNumber,
                                                   email, roomType, airport);
                 tripCustomers.Add(c);

@@ -32,7 +32,7 @@ namespace UnitTestProject1
         public void TestCreateTripCustomer ()
         {
             controller.CreateTrip("Denmark", "03-08-1943");
-            controller.CreateTripCustomer("Hans", "", "", "", "", "", "", "", "", "Denmark");
+            controller.CreateTripCustomer("Hans", "", "", "", "", "", "", "", "", "", "", "Denmark");
             Trip t = tripRepo.GetTrip("Denmark");
             var tripCustomers = t.GetTripCustomers();
 
@@ -43,12 +43,12 @@ namespace UnitTestProject1
         public void TestTripCustomerName ()
         {
             controller.CreateTrip("Denmark", "03-08-1943");
-            controller.CreateTripCustomer("Hans", "", "", "", "", "", "", "", "", "Denmark");
+            controller.CreateTripCustomer("Hans", "", "", "", "", "", "", "", "", "", "", "Denmark");
             Trip t = tripRepo.GetTrip("Denmark");
             var tripCustomers = t.GetTripCustomers();
             TripCustomer c = tripCustomers[0];
 
-            Assert.AreEqual("Hans", c.Name);
+            Assert.AreEqual("Hans", c.FirstName);
         }
 
 
