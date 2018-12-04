@@ -45,6 +45,8 @@ namespace CultureTravelLibrary
             {
                 Console.WriteLine("Rejsen eksisterer allerede" + "\n");
             }
+
+
                
         }
 
