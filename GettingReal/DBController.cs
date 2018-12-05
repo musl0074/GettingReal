@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CultureTravelLibrary;
 
 namespace GettingReal
 {
@@ -70,6 +71,25 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
+        }
+
+
+
+
+
+        public void ShowTripCustomers ()
+        {
+            // Implementer her
+        }
+
+        public TripCustomer DBTripCustomer ()
+        {
+            // Implementer her
+
+
+            // Opret og retuner kunde
+            TripCustomer updatedCustomer = new TripCustomer("", "", "", "", "", "", "", "", "", "");
+            return updatedCustomer;
         }
     }
 }

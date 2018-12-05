@@ -10,6 +10,7 @@ namespace GettingReal
     public class Controller
     {
         private TripRepo tripRepo = new TripRepo();
+        private DBController dbControl = new DBController();
 
         public void CreateTrip(string tripName, string tripDate)
         {
@@ -36,6 +37,18 @@ namespace GettingReal
             return tripRepo;
         }
 
+
+
+
+        public void ShowTripCustomers ()
+        {
+            dbControl.ShowTripCustomers();
+        }
+
+        public TripCustomer DBTripCustomer ()
+        {
+           return dbControl.DBTripCustomer();
+        }
 
         
 

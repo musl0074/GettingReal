@@ -31,7 +31,7 @@ namespace CultureTravelLibrary
             // If it is the first to be added
             if (tripCustomers.Count == 0)
             {
-                TripCustomer c = new TripCustomer(firstName, lastName, plusOne, streetName, streetNumber,
+                TripCustomer c = new TripCustomer(firstName, lastName, streetName, streetNumber,
                                                   zipCode, city, phoneNumber,
                                                   email, roomType, airport);
                 tripCustomers.Add(c);
@@ -53,7 +53,7 @@ namespace CultureTravelLibrary
 
             if (!customerExists)
             {
-                TripCustomer c = new TripCustomer(firstName, lastName, plusOne, streetName, streetNumber,
+                TripCustomer c = new TripCustomer(firstName, lastName, streetName, streetNumber,
                                                   zipCode, city, phoneNumber,
                                                   email, roomType, airport);
                 tripCustomers.Add(c);
