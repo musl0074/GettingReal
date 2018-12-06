@@ -31,10 +31,17 @@ namespace GettingReal
             dbControl.ShowTripCustomers(id);
         }
 
-        public void CreatePassport(string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int CustomerPassId)
+        public void CreatePassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
         {
-            //dbControl.CreatePassport(passportNumber, dateOfIssue, expireDate, dateOfBirth, CustomerPassId)
+            dbControl.InsertTripCustomerPassport(firstName, lastName, passportNumber, dateOfIssue, expireDate, dateOfBirth, customerPassID);
         }
+
+        public void CreateTripCompanion(string companionFirstName, string companionLastName, int customerReferenceID)
+        {
+            dbControl.InsertTripCompanion(companionFirstName, companionLastName, customerReferenceID);
+        }
+
+
 
 
 

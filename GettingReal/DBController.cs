@@ -138,5 +138,55 @@ namespace GettingReal
                 }
             }
         }
+
+        public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("spInsertTrip_Passport", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@PassportNumber", passportNumber));
+                    cmd1.Parameters.Add(new SqlParameter("@FirstName", firstName));
+                    cmd1.Parameters.Add(new SqlParameter("@LastName", lastName));
+                    cmd1.Parameters.Add(new SqlParameter("@DateOfIssue", dateOfIssue));
+                    cmd1.Parameters.Add(new SqlParameter("@PassportExpireDate", expireDate));
+                    cmd1.Parameters.Add(new SqlParameter("@DateOfBirth", dateOfBirth));
+                    cmd1.Parameters.Add(new SqlParameter("@TripCustomerID", customerPassID));
+
+                    cmd1.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
+        public void InsertTripCompanion(string firstName, string lastName,  int customerReferenceID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("spInsertTrip_Companion", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@FirstName", firstName));
+                    cmd1.Parameters.Add(new SqlParameter("@LastName", lastName));
+                    cmd1.Parameters.Add(new SqlParameter("@TripCustomerID", customerReferenceID));
+
+                    cmd1.ExecuteNonQuery();
+
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
     }
 }
