@@ -1,5 +1,4 @@
-﻿using CultureTravelLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +40,16 @@ namespace GettingReal
 
         private void ShowMenu()
         {
-            Console.WriteLine("Kulturrejser");
+
+            string title = @"   _____                                   _  __     _ _                       _               
+  / ____|                                 | |/ /    | | |                     (_)              
+ | |     _ __ __ _ _ __ ___   ___  _ __   | ' /_   _| | |_ _   _ _ __ _ __ ___ _ ___  ___ _ __ 
+ | |    | '__/ _` | '_ ` _ \ / _ \| '_ \  |  <| | | | | __| | | | '__| '__/ _ \ / __|/ _ \ '__|
+ | |____| | | (_| | | | | | | (_) | | | | | . \ |_| | | |_| |_| | |  | | |  __/ \__ \  __/ |   
+  \_____|_|  \__,_|_| |_| |_|\___/|_| |_| |_|\_\__,_|_|\__|\__,_|_|  |_|  \___| |___/\___|_|   
+                                                                             _/ |              
+                                                                            |__/  ";
+            Console.WriteLine(title);
             Console.WriteLine();
             Console.WriteLine("1. Kulturrejser");
             Console.WriteLine("2. Kunder");
@@ -54,13 +62,30 @@ namespace GettingReal
             while (running)
             {
                 Console.Clear();
+                string title = @"   _____                                   _  __     _ _                       _               
+  / ____|                                 | |/ /    | | |                     (_)              
+ | |     _ __ __ _ _ __ ___   ___  _ __   | ' /_   _| | |_ _   _ _ __ _ __ ___ _ ___  ___ _ __ 
+ | |    | '__/ _` | '_ ` _ \ / _ \| '_ \  |  <| | | | | __| | | | '__| '__/ _ \ / __|/ _ \ '__|
+ | |____| | | (_| | | | | | | (_) | | | | | . \ |_| | | |_| |_| | |  | | |  __/ \__ \  __/ |   
+  \_____|_|  \__,_|_| |_| |_|\___/|_| |_| |_|\_\__,_|_|\__|\__,_|_|  |_|  \___| |___/\___|_|   
+                                                                             _/ |              
+                                                                            |__/  ";
+                Console.WriteLine(title);
                 Console.WriteLine("1. Opret Rejse");
+                Console.WriteLine("2. Vis tilmeldte til rejse");
+                Console.WriteLine("3. Gå tilbage til menu");
                 string input = GetUserChoice();
 
                 switch (input)
                 {
                     case "1":
                         CreateTrip();
+                        break;
+                    case "2":
+                        ShowTripCustomer();
+                        break;
+                    case "3":
+                        Show();
                         break;
 
                     default:
@@ -75,9 +100,20 @@ namespace GettingReal
             bool running = true;
             while (running)
             {
+
                 Console.Clear();
+                string title = @"   _____                                   _  __     _ _                       _               
+  / ____|                                 | |/ /    | | |                     (_)              
+ | |     _ __ __ _ _ __ ___   ___  _ __   | ' /_   _| | |_ _   _ _ __ _ __ ___ _ ___  ___ _ __ 
+ | |    | '__/ _` | '_ ` _ \ / _ \| '_ \  |  <| | | | | __| | | | '__| '__/ _ \ / __|/ _ \ '__|
+ | |____| | | (_| | | | | | | (_) | | | | | . \ |_| | | |_| |_| | |  | | |  __/ \__ \  __/ |   
+  \_____|_|  \__,_|_| |_| |_|\___/|_| |_| |_|\_\__,_|_|\__|\__,_|_|  |_|  \___| |___/\___|_|   
+                                                                             _/ |              
+                                                                            |__/  ";
+                Console.WriteLine(title);
                 Console.WriteLine("1. Opret Kunde");
                 Console.WriteLine("2. Opdater Kunde");
+                Console.WriteLine("3. Gå tilbage til menu");
                 string input = GetUserChoice();
 
                 switch (input)
@@ -118,20 +154,26 @@ namespace GettingReal
 
         private void CreateTripCustomer()
         {
+            Console.WriteLine("Liste over rejser.");
+            Console.WriteLine();
+            control.GetTrips();
+            Console.WriteLine();
+            Console.WriteLine("Vælg rejse du vil tilføje kunde til.");
+            string tripId = Console.ReadLine();
+            int Id = Convert.ToInt32(tripId);
+            Console.Clear();
             Console.Write("Indtast fornavn på deltager: ");
             string firstName = Console.ReadLine();
             Console.Write("Indtast efternavn på deltager: ");
             string lastName = Console.ReadLine();
-            Console.Write("Indtast navn på ledsager: ");
-            string plusOne = Console.ReadLine();
             Console.Write("Indtast gadenavn: ");
             string streetName = Console.ReadLine();
             Console.Write("Indtast gadenummer: ");
             string streetNumber = Console.ReadLine();
-            Console.Write("Indtast postnummer: ");
-            string zipCode = Console.ReadLine();
             Console.Write("Indtast by: ");
             string city = Console.ReadLine();
+            Console.Write("Indtast postnummer: ");
+            string zipCode = Console.ReadLine();
             Console.Write("Indtast telefonnummer: ");
             string phoneNumber = Console.ReadLine();
             Console.Write("Indtast email: ");
@@ -140,12 +182,12 @@ namespace GettingReal
             string roomType = Console.ReadLine();
             Console.Write("Indtast lufthavn: ");
             string airport = Console.ReadLine();
-            Console.Write("Indtast navn på eksisterende rejse: ");
-            string tripName = Console.ReadLine();         
+           
+         
             
-            control.CreateTripCustomer(firstName, lastName, plusOne, streetName,
-                                       streetNumber, zipCode, city, phoneNumber, 
-                                       email, roomType, airport, tripName);
+            control.CreateTripCustomer(firstName, lastName, streetName,
+                                       streetNumber, city, zipCode, phoneNumber, 
+                                       email, roomType, airport, Id);
 
             Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen");
             Console.Read();
@@ -155,40 +197,26 @@ namespace GettingReal
 
         public void UpdateTripCustomer ()
         {
-            Console.WriteLine("Indtast navn på rejsen");
-            string tripName = Console.ReadLine();
-            // DB SP der reader alle tripCustomers WHERE TripName = @tripName
-
-            // 1. Hans Børge ...........
-            // 2. Daniel Drommedar
-
-            Console.Write("Dit valg: ");
-            string input = Console.ReadLine();
-
-            TripCustomer dbTripCustomer = control.DBTripCustomer();   // Get current version in DB
+            Console.WriteLine("Vælg rejse fra listen over rejser.");
+            Console.WriteLine();
+            control.GetTrips();
+            Console.WriteLine();
+            Console.WriteLine("Indtast id på rejse");
+            string TripId = Console.ReadLine();
+            int Id = Convert.ToInt32(TripId);
+            Console.Clear();
+            control.ShowTripCustomers(Id);
+            Console.WriteLine();
+            Console.Write("Indtast id på kunde.");
+            string CustomerID = Console.ReadLine();
+            int CustomerPassID = Convert.ToInt32(CustomerID);
             
             bool running = true;
             while(running)
             {
-                Console.Clear();
-
-                Console.WriteLine(dbTripCustomer.FirstName);
-                Console.WriteLine(dbTripCustomer.LastName);
-                Console.WriteLine(dbTripCustomer.StreetName);
-                Console.WriteLine(dbTripCustomer.StreetNumber);
-                Console.WriteLine(dbTripCustomer.ZipCode);
-                Console.WriteLine(dbTripCustomer.City);
-                Console.WriteLine(dbTripCustomer.PhoneNumber);
-                Console.WriteLine(dbTripCustomer.Email);
-                Console.WriteLine(dbTripCustomer.RoomType);
-                Console.WriteLine(dbTripCustomer.Airport);
-                Console.WriteLine(dbTripCustomer.PassportNumber);
-                Console.WriteLine(dbTripCustomer.DateOfIssue);
-                Console.WriteLine(dbTripCustomer.ExpireDate);
-                Console.WriteLine(dbTripCustomer.DateOfBirth + "\n");
                 
-                Console.WriteLine("1. Opdater Pas informationer");
-                Console.WriteLine("2. Opdater ledsager");
+                Console.WriteLine("1. indtast Pas informationer");
+                Console.WriteLine("2. opret ledsager");
                 Console.Write("Dit valg: ");
                 string input2 = Console.ReadLine();
 
@@ -208,13 +236,7 @@ namespace GettingReal
 
                         Console.Write("Indsæt fødseldagsdato (--/--/--/): ");
                         string dateOfBirth = Console.ReadLine();
-
-
-                        dbTripCustomer.PassportNumber = passportNumber;
-                        dbTripCustomer.DateOfIssue = dateOfIssue;
-                        dbTripCustomer.ExpireDate = expireDate;
-                        dbTripCustomer.DateOfBirth = dateOfBirth;
-                        // DB SP Til at opdatere pass informationer ud med disse oplysninger
+                        //control.CreatePassport(passportNumber, dateOfIssue, expireDate, dateOfBirth, CustomerPassId);
                         break;
 
                     case "2":
@@ -228,7 +250,22 @@ namespace GettingReal
                         break;
                 }
             }
-            
+              
+        }
+        public void ShowTripCustomer()
+        {
+            Console.WriteLine("Vælg rejse fra listen over rejser.");
+            Console.WriteLine();
+            control.GetTrips();
+            Console.WriteLine();
+            Console.WriteLine("Indtast id på rejse");
+            string TripId = Console.ReadLine();
+            int Id = Convert.ToInt32(TripId);
+            Console.Clear();
+            control.ShowTripCustomers(Id);
+            Console.WriteLine();
+            Console.WriteLine("Press Enter to Continue");
+            Console.ReadLine();
         }
     }
 }

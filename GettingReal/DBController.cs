@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using CultureTravelLibrary;
 
 namespace GettingReal
 {
@@ -14,7 +13,6 @@ namespace GettingReal
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
         public void InsertTrip(string tripName, string date)
         {
-            DateTime dateTime = DateTime.Parse(date);
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -23,7 +21,7 @@ namespace GettingReal
                     SqlCommand cmd1 = new SqlCommand("spInsertTrip", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@TripName", tripName));
-                    cmd1.Parameters.Add(new SqlParameter("@TripDate", dateTime));
+                    cmd1.Parameters.Add(new SqlParameter("@TripDate", date));
 
                     cmd1.ExecuteNonQuery();
 
@@ -38,9 +36,8 @@ namespace GettingReal
         }
 
         public void InsertTripCustomer(string firstName, string lastName, string streetName, string streetNumber, string cityName, string zipCode
-                                        , string phoneNumber, string email, string roomType, string airportName, string tripName, string tripDate)
+                                        , string phoneNumber, string email, string roomType, string airportName, int Id)
         {
-            DateTime dateTime = DateTime.Parse(tripDate);
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -58,9 +55,8 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@Email", email));
                     cmd1.Parameters.Add(new SqlParameter("@RoomType", roomType));
                     cmd1.Parameters.Add(new SqlParameter("@AirportName", airportName));
-                    cmd1.Parameters.Add(new SqlParameter("@TripName", tripName));
-                    cmd1.Parameters.Add(new SqlParameter("@TripDate", dateTime));
-
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", Id));
+                    
                     cmd1.ExecuteNonQuery();
 
 
@@ -77,19 +73,70 @@ namespace GettingReal
 
 
 
-        public void ShowTripCustomers ()
+        public void ShowTripCustomers (int Id)
         {
-            // Implementer her
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("ShowTripCustomers", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", Id));
+
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string customerId = reader["TripCustomerID"].ToString();
+                            string name = reader["CustomerName"].ToString();
+                            string adress = reader["CustomerAdress"].ToString();
+                            string contactInfo = reader["CustomerContactInfo"].ToString();
+                            
+                            Console.WriteLine(customerId + ". " + name + ". " + adress + ". " + contactInfo + ".");
+                        }
+                    }
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
         }
 
-        public TripCustomer DBTripCustomer ()
+        public void ShowTrips()
         {
-            // Implementer her
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("ShowTrips", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
 
 
-            // Opret og retuner kunde
-            TripCustomer updatedCustomer = new TripCustomer("", "", "", "", "", "", "", "", "", "");
-            return updatedCustomer;
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string Id = reader["TripID"].ToString();
+                            string Name = reader["TripName"].ToString();
+                            string Date = reader["TripDate"].ToString();
+                            Console.WriteLine(Id + " " + Name + " " + Date + ".");
+                        }
+                    }
+                    reader.Close();
+                   
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
         }
     }
 }

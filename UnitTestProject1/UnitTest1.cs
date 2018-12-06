@@ -1,11 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GettingReal;
-using CultureTravelLibrary;
 
 namespace UnitTestProject1
 {
-    [TestClass]
+    /*[TestClass]
     public class UnitTest1
     {       
             Controller controller;
@@ -52,6 +51,6 @@ namespace UnitTestProject1
         }
 
 
-    }
+    }*/
    
 }

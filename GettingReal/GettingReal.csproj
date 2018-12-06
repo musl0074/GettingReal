@@ -52,11 +52,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CultureTravelLibrary\CultureTravelLibrary.csproj">
-      <Project>{4563b984-8dcc-470d-a47b-b876c306c0e1}</Project>
-      <Name>CultureTravelLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

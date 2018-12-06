@@ -56,10 +56,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CultureTravelLibrary\CultureTravelLibrary.csproj">
-      <Project>{4563B984-8DCC-470D-A47B-B876C306C0E1}</Project>
-      <Name>CultureTravelLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GettingReal\GettingReal.csproj">
       <Project>{fc7e4ca6-0354-4f31-8b56-d6e111b56ad7}</Project>
       <Name>GettingReal</Name>

@@ -3,54 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CultureTravelLibrary;
 
 namespace GettingReal
 {
     public class Controller
     {
-        private TripRepo tripRepo = new TripRepo();
         private DBController dbControl = new DBController();
 
         public void CreateTrip(string tripName, string tripDate)
         {
-            tripRepo.CreateTrip(tripName, tripDate);
+            dbControl.InsertTrip(tripName, tripDate);
         }
 
-        public void CreateTripCustomer(string firstName, string lastName, string plusOne, string streetName, string streetNumber, string zipCode, string city,
-                                       string phoneNumber, string email, string roomType, string airport, string tripName)
+        public void CreateTripCustomer(string firstName, string lastName, string streetName, string streetNumber, string city, string zipCode,
+                                       string phoneNumber, string email, string roomType, string airport, int Id)
+        {  
+            dbControl.InsertTripCustomer(firstName, lastName, streetName, streetNumber, city, zipCode, phoneNumber, email, roomType, airport, Id);
+        }
+        public void GetTrips()
         {
-            Trip t = tripRepo.GetTrip(tripName);
-
-            if (t != null)
-            {
-                t.CreateTripCustomer(firstName, lastName, plusOne, streetName, streetNumber, zipCode, city, phoneNumber, email, roomType, airport);
-            }
-            else
-            {
-                Console.WriteLine("Den angivet rejse eksisterer ikke" + "\n");
-            }
+            dbControl.ShowTrips();
         }
 
-        public TripRepo GetTripRepo()
+
+        public void ShowTripCustomers (int id)
         {
-            return tripRepo;
+            dbControl.ShowTripCustomers(id);
         }
 
-
-
-
-        public void ShowTripCustomers ()
+        public void CreatePassport(string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int CustomerPassId)
         {
-            dbControl.ShowTripCustomers();
+            //dbControl.CreatePassport(passportNumber, dateOfIssue, expireDate, dateOfBirth, CustomerPassId)
         }
 
-        public TripCustomer DBTripCustomer ()
-        {
-           return dbControl.DBTripCustomer();
-        }
 
-        
 
     }
 }
