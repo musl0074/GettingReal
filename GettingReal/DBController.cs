@@ -70,7 +70,10 @@ namespace GettingReal
         }
 
 
-
+        public void SpPrintList (int tripID)
+        {
+            // Implementer her..... samme som ShowTripCustomers, bare med alt det relevante data
+        }
 
 
         public void ShowTripCustomers (int Id)

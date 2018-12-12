@@ -30,6 +30,9 @@ namespace GettingReal
                         Console.Clear();
                         TripCustomerMenu();                       
                         break;
+                    case "3":
+                        PrintOutTrip();
+                        break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.ReadLine();
@@ -53,6 +56,7 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("1. Kulturrejser");
             Console.WriteLine("2. Kunder");
+            Console.WriteLine("3. Print liste ud med deltagere");
             Console.WriteLine("0. Exit");            
         }
         
@@ -126,6 +130,7 @@ namespace GettingReal
                     case "3":
                         ShowTripCustomer();
                         break;
+
                     case "0":
                         Show();
                         break;
@@ -161,7 +166,7 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Liste over rejser.");
             Console.WriteLine();
-            control.GetTrips();
+            control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Vælg rejse du vil tilføje kunde til: ");
             string tripId = Console.ReadLine();
@@ -214,7 +219,7 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Vælg rejse fra listen over rejser.");
             Console.WriteLine();
-            control.GetTrips();
+            control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Indtast id på rejse: ");
             string TripId = Console.ReadLine();
@@ -287,7 +292,7 @@ namespace GettingReal
         {
             Console.WriteLine("Vælg rejse fra listen over rejser.");
             Console.WriteLine();
-            control.GetTrips();
+            control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Indtast id på rejse: ");
             string TripId = Console.ReadLine();
@@ -307,6 +312,33 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen.");
             Console.ReadLine();
+        }
+
+
+        public void PrintOutTrip ()
+        {
+            Console.Clear();
+            string title = @"   _____                                   _  __     _ _                       _               
+  / ____|                                 | |/ /    | | |                     (_)              
+ | |     _ __ __ _ _ __ ___   ___  _ __   | ' /_   _| | |_ _   _ _ __ _ __ ___ _ ___  ___ _ __ 
+ | |    | '__/ _` | '_ ` _ \ / _ \| '_ \  |  <| | | | | __| | | | '__| '__/ _ \ / __|/ _ \ '__|
+ | |____| | | (_| | | | | | | (_) | | | | | . \ |_| | | |_| |_| | |  | | |  __/ \__ \  __/ |   
+  \_____|_|  \__,_|_| |_| |_|\___/|_| |_| |_|\_\__,_|_|\__|\__,_|_|  |_|  \___| |___/\___|_|   
+                                                                             _/ |              
+                                                                            |__/  ";
+            Console.WriteLine(title);
+
+            Console.WriteLine("Vælg en rejse" + "\n");
+
+            control.ShowTrips();
+
+            Console.Write("\n" + "Indtast id på rejse: ");
+            string input = GetUserChoice();
+            int tripID = Convert.ToInt32(input);
+
+            control.SpPrintList(tripID);
+
+            Console.Read();
         }
     }
 }
