@@ -24,9 +24,6 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@TripDate", date));
 
                     cmd1.ExecuteNonQuery();
-
-
-
                 }
                 catch (SqlException e)
                 {
