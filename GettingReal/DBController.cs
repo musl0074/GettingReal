@@ -74,7 +74,7 @@ namespace GettingReal
                 try
                 {
                     con.Open();
-                    SqlCommand cmd1 = new SqlCommand("SpPrintlist", con);
+                    SqlCommand cmd1 = new SqlCommand("PrintTripCustomers", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@TripID", tripID));
 
@@ -218,6 +218,43 @@ namespace GettingReal
                     cmd1.ExecuteNonQuery();
 
                 }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
+        public void ShowTrip(int tripID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("ShowTripInfo", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripID));
+
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            string TripName = reader["TripName"].ToString();
+                            string TripDate = reader["TripDate"].ToString();
+
+                            Console.WriteLine(TripName + " " + TripDate + ".");
+
+                        }
+
+
+                    }
+
+                }
+
                 catch (SqlException e)
                 {
                     Console.WriteLine("Ups" + e.Message);

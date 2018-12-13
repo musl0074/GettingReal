@@ -30,9 +30,6 @@ namespace GettingReal
                         Console.Clear();
                         TripCustomerMenu();                       
                         break;
-                    case "3":
-                        PrintOutTrip();
-                        break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.ReadLine();
@@ -56,7 +53,6 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("1. Kulturrejser");
             Console.WriteLine("2. Kunder");
-            Console.WriteLine("3. Print liste ud med deltagere");
             Console.WriteLine("0. Exit");            
         }
         
@@ -114,6 +110,7 @@ namespace GettingReal
                 Console.WriteLine("1. Opret Kunde");
                 Console.WriteLine("2. Opdater Kunde");
                 Console.WriteLine("3. Vis tilmeldte kunder");
+                Console.WriteLine("4. Print liste over tilmeldte kunder");
                 Console.WriteLine("0. Gå tilbage til menu");
                 string input = GetUserChoice();
 
@@ -130,7 +127,9 @@ namespace GettingReal
                     case "3":
                         ShowTripCustomer();
                         break;
-
+                    case "4":
+                        PrintOutTrip();
+                        break;
                     case "0":
                         Show();
                         break;
@@ -317,25 +316,14 @@ namespace GettingReal
 
         public void PrintOutTrip ()
         {
-            Console.Clear();
-            string title = @"   _____                                   _  __     _ _                       _               
-  / ____|                                 | |/ /    | | |                     (_)              
- | |     _ __ __ _ _ __ ___   ___  _ __   | ' /_   _| | |_ _   _ _ __ _ __ ___ _ ___  ___ _ __ 
- | |    | '__/ _` | '_ ` _ \ / _ \| '_ \  |  <| | | | | __| | | | '__| '__/ _ \ / __|/ _ \ '__|
- | |____| | | (_| | | | | | | (_) | | | | | . \ |_| | | |_| |_| | |  | | |  __/ \__ \  __/ |   
-  \_____|_|  \__,_|_| |_| |_|\___/|_| |_| |_|\_\__,_|_|\__|\__,_|_|  |_|  \___| |___/\___|_|   
-                                                                             _/ |              
-                                                                            |__/  ";
-            Console.WriteLine(title);
-
-            Console.WriteLine("Vælg en rejse" + "\n");
-
+            Console.WriteLine("Vælg rejse fra listen over rejser.");
+            Console.WriteLine();
             control.ShowTrips();
-
-            Console.Write("\n" + "Indtast id på rejse: ");
-            string input = GetUserChoice();
+            Console.WriteLine();
+            Console.WriteLine("Indtast id på rejse: ");
+            string input = Console.ReadLine();
             int tripID = Convert.ToInt32(input);
-
+            Console.Clear();
             control.SpPrintList(tripID);
 
             Console.Read();

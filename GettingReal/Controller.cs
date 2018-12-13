@@ -44,6 +44,7 @@ namespace GettingReal
 
         public void SpPrintList (int tripID)
         {
+            dbControl.ShowTrip(tripID);
             dbControl.SpPrintList(tripID);
         }
 
