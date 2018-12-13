@@ -53,7 +53,7 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@RoomType", roomType));
                     cmd1.Parameters.Add(new SqlParameter("@AirportName", airportName));
                     cmd1.Parameters.Add(new SqlParameter("@TripID", Id));
-                    
+
                     cmd1.ExecuteNonQuery();
 
 
@@ -67,11 +67,48 @@ namespace GettingReal
         }
 
 
-        public void SpPrintList (int tripID)
+        public void SpPrintList(int tripID)
         {
-            // Implementer her..... samme som ShowTripCustomers, bare med alt det relevante data
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("SpPrintlist", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripID));
+
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            string TripCustomer = reader["CustomerName"].ToString();
+                            string Companion = reader["CompanionName"].ToString();
+                            string Airport = reader["AirportName"].ToString();
+                            string Room = reader["RoomType"].ToString();
+                            string deposit = reader["DepositeStatus"].ToString();
+                            string Balance = reader["BalanceStatus"].ToString();
+
+                            Console.WriteLine(TripCustomer + ". " + Companion + ". " + Airport + ". " + Room + ". " + deposit + ". " + Balance + ". ");
+
+                        }
+
+
+                    }
+
+                }
+
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
         }
 
+    
 
         public void ShowTripCustomers (int Id)
         {
