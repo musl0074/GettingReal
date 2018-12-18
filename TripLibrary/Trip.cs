@@ -23,5 +23,13 @@ namespace TripLibrary
             Name = name;
             Date = date;
         }
+        
+        List<TripCustomer> customers = new List<TripCustomer>();
+
+        public void CreateCustomers(string id, string name, string adress, string contactInfo)
+        {
+            TripCustomer cust = new TripCustomer(id, name, adress, contactInfo);
+            customers.Add(cust);
+        }
     }
 }
