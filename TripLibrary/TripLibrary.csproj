@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TripCustomerCompanion.cs" />
     <Compile Include="IContactInformation.cs" />
+    <Compile Include="IPassportInformation.cs" />
     <Compile Include="IPersonalInformation.cs" />
     <Compile Include="ITripInformation.cs" />
     <Compile Include="Trip.cs" />
