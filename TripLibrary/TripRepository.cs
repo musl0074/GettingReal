@@ -10,9 +10,9 @@ namespace TripLibrary
     {
         public List<Trip> trips = new List<Trip>();
 
-        public void CreateTrips(int Id, string tripName, string tripDate)
+        public void CreateTrips(string id, string tripName, string tripDate)
         {
-            Trip t = new Trip(Id, tripName, tripDate);
+            Trip t = new Trip(id, tripName, tripDate);
             trips.Add(t);
         }
 
