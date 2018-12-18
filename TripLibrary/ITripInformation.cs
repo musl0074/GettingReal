@@ -9,5 +9,6 @@ namespace TripLibrary
     public interface ITripInformation
     {
         string RoomType { get; set; }
+        string AirportName { get; set; }
     }
 }
