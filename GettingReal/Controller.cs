@@ -20,7 +20,7 @@ namespace GettingReal
         {  
             dbControl.InsertTripCustomer(firstName, lastName, streetName, streetNumber, city, zipCode, phoneNumber, email, roomType, airport, Id);
         }
-        public void GetTrips()
+        public void ShowTrips()
         {
             dbControl.ShowTrips();
         }
@@ -42,7 +42,11 @@ namespace GettingReal
         }
 
 
-
+        public void SpPrintList (int tripID)
+        {
+            dbControl.ShowTrip(tripID);
+            dbControl.SpPrintList(tripID);
+        }
 
 
     }

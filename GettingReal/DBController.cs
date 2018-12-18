@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using TripLibrary;
 
 namespace GettingReal
 {
@@ -13,6 +14,9 @@ namespace GettingReal
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
         public void InsertTrip(string tripName, string date)
         {
+
+            Trip newTrip = new Trip(tripName, date);
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -20,13 +24,10 @@ namespace GettingReal
                     con.Open();
                     SqlCommand cmd1 = new SqlCommand("spInsertTrip", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@TripName", tripName));
-                    cmd1.Parameters.Add(new SqlParameter("@TripDate", date));
+                    cmd1.Parameters.Add(new SqlParameter("@TripName", newTrip.Name));
+                    cmd1.Parameters.Add(new SqlParameter("@TripDate", newTrip.Date));
 
                     cmd1.ExecuteNonQuery();
-
-
-
                 }
                 catch (SqlException e)
                 {
@@ -56,7 +57,7 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@RoomType", roomType));
                     cmd1.Parameters.Add(new SqlParameter("@AirportName", airportName));
                     cmd1.Parameters.Add(new SqlParameter("@TripID", Id));
-                    
+
                     cmd1.ExecuteNonQuery();
 
 
@@ -70,8 +71,48 @@ namespace GettingReal
         }
 
 
+        public void SpPrintList(int tripID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("PrintTripCustomers", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripID));
+
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            string TripCustomer = reader["CustomerName"].ToString();
+                            string Companion = reader["CompanionName"].ToString();
+                            string Airport = reader["AirportName"].ToString();
+                            string Room = reader["RoomType"].ToString();
+                            string deposit = reader["DepositeStatus"].ToString();
+                            string Balance = reader["BalanceStatus"].ToString();
+
+                            Console.WriteLine(TripCustomer + ". " + Companion + ". " + Airport + ". " + Room + ". " + deposit + ". " + Balance + ". ");
+
+                        }
 
 
+                    }
+
+                }
+
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
+    
 
         public void ShowTripCustomers (int Id)
         {
@@ -181,6 +222,43 @@ namespace GettingReal
                     cmd1.ExecuteNonQuery();
 
                 }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
+        public void ShowTrip(int tripID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("ShowTripInfo", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripID));
+
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            string TripName = reader["TripName"].ToString();
+                            string TripDate = reader["TripDate"].ToString();
+
+                            Console.WriteLine(TripName + " " + TripDate + ".");
+
+                        }
+
+
+                    }
+
+                }
+
                 catch (SqlException e)
                 {
                     Console.WriteLine("Ups" + e.Message);
