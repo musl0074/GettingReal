@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TripLibrary;
 
 namespace GettingReal
 {
     public class Controller
     {
         private DBController dbControl = new DBController();
+        private TripRepository tripRepo = new TripRepository();
 
         public void CreateTrip(string tripName, string tripDate)
         {
@@ -23,6 +25,11 @@ namespace GettingReal
         public void ShowTrips()
         {
             dbControl.ShowTrips();
+            List<Trip> trips = tripRepo.ShowTrips();
+            for (int i = 0; i < trips.Count; i++)
+            {
+                Console.WriteLine(trips[i].Id + ". " + trips[i].Name + " " + trips[i].Date);
+            }
         }
 
 
@@ -46,6 +53,11 @@ namespace GettingReal
         {
             dbControl.ShowTrip(tripID);
             dbControl.SpPrintList(tripID);
+        }
+
+        public void DeleteList()
+        {
+            tripRepo.DeleteList();
         }
 
 

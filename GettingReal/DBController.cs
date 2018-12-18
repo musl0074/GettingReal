@@ -9,8 +9,10 @@ using TripLibrary;
 
 namespace GettingReal
 {
+    
     class DBController
     {
+        private TripRepository tripRepo = new TripRepository();
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
         public void InsertTrip(string tripName, string date)
         {
@@ -167,7 +169,7 @@ namespace GettingReal
                             string Id = reader["TripID"].ToString();
                             string Name = reader["TripName"].ToString();
                             string Date = reader["TripDate"].ToString();
-                            Console.WriteLine(Id + " " + Name + " " + Date + ".");
+                            tripRepo.CreateTrip(Id, Name, Date);
                         }
                     }
                     reader.Close();
@@ -250,8 +252,8 @@ namespace GettingReal
                             string TripName = reader["TripName"].ToString();
                             string TripDate = reader["TripDate"].ToString();
 
-                            Console.WriteLine(TripName + " " + TripDate + ".");
 
+                            tripRepo.CreateTrip(TripName, TripDate);
                         }
 
 
