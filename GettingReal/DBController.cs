@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using TripLibrary;
 
 namespace GettingReal
 {
@@ -13,6 +14,9 @@ namespace GettingReal
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
         public void InsertTrip(string tripName, string date)
         {
+
+            Trip newTrip = new Trip(tripName, date);
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -20,8 +24,8 @@ namespace GettingReal
                     con.Open();
                     SqlCommand cmd1 = new SqlCommand("spInsertTrip", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@TripName", tripName));
-                    cmd1.Parameters.Add(new SqlParameter("@TripDate", date));
+                    cmd1.Parameters.Add(new SqlParameter("@TripName", newTrip.Name));
+                    cmd1.Parameters.Add(new SqlParameter("@TripDate", newTrip.Date));
 
                     cmd1.ExecuteNonQuery();
                 }
