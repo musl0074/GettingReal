@@ -39,12 +39,11 @@ namespace TripLibrary
             return trips;
         }
 
-        public void DeleteList()
+        public void DeleteTripList()
         {
-            foreach (Trip trip in trips)
-            {
-                trips.Clear();
-            }
+          
+            trips.Clear();
+            
         }
     }
 }

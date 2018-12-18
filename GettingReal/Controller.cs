@@ -55,9 +55,9 @@ namespace GettingReal
             dbControl.SpPrintList(tripID);
         }
 
-        public void DeleteList()
+        public void DeleteTripList()
         {
-            tripRepo.DeleteList();
+            tripRepo.DeleteTripList();
         }
 
 

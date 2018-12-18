@@ -291,6 +291,7 @@ namespace GettingReal
         {
             Console.WriteLine("Vælg rejse fra listen over rejser.");
             Console.WriteLine();
+            control.DeleteTripList();
             control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Indtast id på rejse: ");
@@ -311,7 +312,6 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen.");
             Console.ReadLine();
-            control.DeleteList();
         }
 
 
