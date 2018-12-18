@@ -138,7 +138,7 @@ namespace GettingReal
                             string adress = reader["CustomerAdress"].ToString();
                             string contactInfo = reader["CustomerContactInfo"].ToString();
                             
-                            Console.WriteLine(customerId + ". " + name + ". " + adress + ". " + contactInfo + ".");
+                            tripRepo.CreateCustomers(customerId, name, adress, contactInfo);
                         }
                     }
                 }
@@ -169,7 +169,7 @@ namespace GettingReal
                             string Id = reader["TripID"].ToString();
                             string Name = reader["TripName"].ToString();
                             string Date = reader["TripDate"].ToString();
-                            tripRepo.CreateTrip(Id, Name, Date);
+                            tripRepo.CreateTrips(Id, Name, Date);
                         }
                     }
                     reader.Close();
