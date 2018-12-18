@@ -204,7 +204,7 @@ namespace GettingReal
 
 
 
-        public void UpdateTripCustomer ()
+        private void UpdateTripCustomer ()
         {
             string title = @"   _____                                   _  __     _ _                       _               
   / ____|                                 | |/ /    | | |                     (_)              
@@ -287,7 +287,7 @@ namespace GettingReal
             }
               
         }
-        public void ShowTripCustomer()
+        private void ShowTripCustomer()
         {
             Console.WriteLine("Vælg rejse fra listen over rejser.");
             Console.WriteLine();
