@@ -40,7 +40,7 @@ namespace GettingReal
         }
 
         public void InsertTripCustomer(string firstName, string lastName, string streetName, string streetNumber, string cityName, string zipCode
-                                        , string phoneNumber, string email, string roomType, string airportName, int Id)
+                                        , string phoneNumber, string email, string roomType, string airportName, int tripId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -74,7 +74,7 @@ namespace GettingReal
         }
 
 
-        public void SpPrintList(int tripID)
+        public void SpPrintList(int tripId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
