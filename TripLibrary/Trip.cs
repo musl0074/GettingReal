@@ -41,6 +41,11 @@ namespace TripLibrary
 
 
         }
+        public void CreateTripCustomers (string fullName, string companion, string roomType, string airportName, string depositeStatus, string balanceStatus)
+        {
+            TripCustomer tripCustomer = new TripCustomer(fullName, companion, roomType, airportName, depositeStatus, balanceStatus);
+            tripCustomers.Add(tripCustomer);
+        }
 
 
         public List<TripCustomer> ShowTripCustomers ()

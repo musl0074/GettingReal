@@ -38,10 +38,9 @@ namespace GettingReal
             Trip updatedTrip = dbControl.ShowTripCustomers(id);
             List<TripCustomer> tripCustomers = updatedTrip.ShowTripCustomers();
 
-            // print whatever ud
             for (int i = 0; i < tripCustomers.Count; i++)
             {
-                
+                Console.WriteLine(tripCustomers[i].Id + ". " + tripCustomers[i].FullName + ", " + tripCustomers[i].AddressInformation + ", " + tripCustomers[i].ContactInformation + ".");
             }
         }
 
@@ -58,8 +57,22 @@ namespace GettingReal
 
         public void SpPrintList (int tripID)
         {
-            dbControl.ShowTrip(tripID);
-            dbControl.SpPrintList(tripID);
+            TripRepository updatedTripRepo = dbControl.ShowTrip(tripID);
+            List<Trip> trips = updatedTripRepo.ShowTrips();
+            for (int i = 0; i < trips.Count; i++)
+            {
+                Console.WriteLine(trips[i].Name + " " + trips[i].Date);
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("|    Fulde navn    ||      Ledsager     ||  Værelsestype  ||   Lufthavn   || Depositum || Restbeløb |");
+            Trip trip = dbControl.SpPrintList(tripID);
+            List<TripCustomer> tripCustomers = trip.ShowTripCustomers();
+            for (int i = 0; i < tripCustomers.Count; i++)
+            {
+                Console.WriteLine("  " + tripCustomers[i].FullName + "    " + tripCustomers[i].Companion + "   " + tripCustomers[i].RoomType
+                + "   " + tripCustomers[i].AirportName + "      " + tripCustomers[i].DepositeStatus + "          " + tripCustomers[i].BlanceStatus);
+            }
         }
 
         public void DeleteTripList()

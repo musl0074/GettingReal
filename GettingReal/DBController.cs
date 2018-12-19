@@ -15,6 +15,7 @@ namespace GettingReal
         private TripRepository tripRepo = new TripRepository();
         private Trip trip = new Trip();
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
+
         public void InsertTrip(string tripName, string date)
         {
 
@@ -74,7 +75,7 @@ namespace GettingReal
         }
 
 
-        public void SpPrintList(int tripId)
+        public Trip SpPrintList(int tripId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -92,14 +93,15 @@ namespace GettingReal
                         while (reader.Read())
                         {
 
-                            string TripCustomer = reader["CustomerName"].ToString();
-                            string Companion = reader["CompanionName"].ToString();
-                            string Airport = reader["AirportName"].ToString();
-                            string Room = reader["RoomType"].ToString();
+                            string customerName = reader["CustomerName"].ToString();
+                            string companion = reader["CompanionName"].ToString();
+                            string airport = reader["AirportName"].ToString();
+                            string room = reader["RoomType"].ToString();
                             string deposit = reader["DepositeStatus"].ToString();
-                            string Balance = reader["BalanceStatus"].ToString();
+                            string balance = reader["BalanceStatus"].ToString();
 
-                            Console.WriteLine(TripCustomer + ". " + Companion + ". " + Airport + ". " + Room + ". " + deposit + ". " + Balance + ". ");
+                            trip.CreateTripCustomers(customerName, companion, airport, room, deposit, balance);
+                            
 
                         }
 
@@ -113,6 +115,7 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
+            return trip;
         }
 
     
@@ -239,7 +242,7 @@ namespace GettingReal
             }
         }
 
-        public void ShowTrip(int tripID)
+        public TripRepository ShowTrip(int tripID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -274,6 +277,7 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
+            return tripRepo;
         }
 
     }
