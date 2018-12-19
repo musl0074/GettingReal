@@ -13,6 +13,7 @@ namespace GettingReal
     class DBController
     {
         private TripRepository tripRepo = new TripRepository();
+        private Trip trip = new Trip();
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
         public void InsertTrip(string tripName, string date)
         {
@@ -138,9 +139,11 @@ namespace GettingReal
                             string adress = reader["CustomerAdress"].ToString();
                             string contactInfo = reader["CustomerContactInfo"].ToString();
                             
-                            tripRepo.CreateCustomers(customerId, name, adress, contactInfo);
+                            trip.CreateTripCustomers(customerId, name, adress, contactInfo);
+                            
                         }
                     }
+
                 }
                 catch (SqlException e)
                 {

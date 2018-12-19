@@ -10,7 +10,7 @@ namespace GettingReal
     public class Controller
     {
         private DBController dbControl = new DBController();
-        private TripRepository tripRepo = new TripRepository();
+        private TripRepository tripRepo;
 
         public void CreateTrip(string tripName, string tripDate)
         {
@@ -36,6 +36,7 @@ namespace GettingReal
         public void ShowTripCustomers (int id)
         {
             dbControl.ShowTripCustomers(id);
+            List<TripCustomer> tripCustomers = triå
         }
 
         public void CreatePassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
