@@ -10,7 +10,7 @@ namespace GettingReal
     public class Controller
     {
         private DBController dbControl = new DBController();
-        private TripRepository tripRepo;
+        private TripRepository tripRepo = new TripRepository();
 
         public void CreateTrip(string tripName, string tripDate)
         {
@@ -24,8 +24,8 @@ namespace GettingReal
         }
         public void ShowTrips()
         {
-            dbControl.ShowTrips();
-            List<Trip> trips = tripRepo.ShowTrips();
+            TripRepository updatedTripRepo = dbControl.ShowTrips();
+            List<Trip> trips = updatedTripRepo.ShowTrips();
             for (int i = 0; i < trips.Count; i++)
             {
                 Console.WriteLine(trips[i].Id + ". " + trips[i].Name + " " + trips[i].Date);
@@ -35,8 +35,10 @@ namespace GettingReal
 
         public void ShowTripCustomers (int id)
         {
-            dbControl.ShowTripCustomers(id);
-            List<TripCustomer> tripCustomers = triå
+            Trip updatedTrip = dbControl.ShowTripCustomers(id);
+            List<TripCustomer> tripCustomers = updatedTrip.ShowTripCustomers();
+
+            // print whatever ud
         }
 
         public void CreatePassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
