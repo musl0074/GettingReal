@@ -323,9 +323,9 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Indtast id på rejse: ");
             string input = Console.ReadLine();
-            int tripID = Convert.ToInt32(input);
+            int tripId = Convert.ToInt32(input);
             Console.Clear();
-            control.SpPrintList(tripID);
+            control.SpPrintList(tripId);
 
             Console.Read();
         }

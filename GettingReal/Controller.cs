@@ -39,6 +39,10 @@ namespace GettingReal
             List<TripCustomer> tripCustomers = updatedTrip.ShowTripCustomers();
 
             // print whatever ud
+            for (int i = 0; i < tripCustomers.Count; i++)
+            {
+                
+            }
         }
 
         public void CreatePassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)

@@ -59,7 +59,7 @@ namespace GettingReal
                     cmd1.Parameters.Add(new SqlParameter("@Email", email));
                     cmd1.Parameters.Add(new SqlParameter("@RoomType", roomType));
                     cmd1.Parameters.Add(new SqlParameter("@AirportName", airportName));
-                    cmd1.Parameters.Add(new SqlParameter("@TripID", Id));
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripId));
 
                     cmd1.ExecuteNonQuery();
 
@@ -83,7 +83,7 @@ namespace GettingReal
                     con.Open();
                     SqlCommand cmd1 = new SqlCommand("PrintTripCustomers", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripID));
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", tripId));
 
                     SqlDataReader reader = cmd1.ExecuteReader();
 
