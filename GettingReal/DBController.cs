@@ -117,8 +117,10 @@ namespace GettingReal
 
     
 
-        public void ShowTripCustomers (int Id)
+        public Trip ShowTripCustomers (int Id)
         {
+            Trip placeholderTrip = new Trip();
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -139,8 +141,8 @@ namespace GettingReal
                             string adress = reader["CustomerAdress"].ToString();
                             string contactInfo = reader["CustomerContactInfo"].ToString();
                             
-                            trip.CreateTripCustomers(customerId, name, adress, contactInfo);
                             
+                            placeholderTrip.CreateTripCustomers(customerId, name, adress, contactInfo);
                         }
                     }
 
@@ -150,9 +152,11 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
+
+            return trip;
         }
 
-        public void ShowTrips()
+        public TripRepository ShowTrips()
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -183,6 +187,7 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
+            return tripRepo;
         }
 
         public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)

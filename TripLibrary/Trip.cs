@@ -8,7 +8,7 @@ namespace TripLibrary
 {
     public class Trip
     {
-        List<TripCustomer> tripCustomers = new List<TripCustomer>();
+        private List<TripCustomer> tripCustomers = new List<TripCustomer>();
 
         public string Id { get; set; }
         public string Name { get; set; }
