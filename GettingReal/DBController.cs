@@ -75,7 +75,7 @@ namespace GettingReal
         }
 
 
-        public void SpPrintList(int tripId)
+        public Trip SpPrintList(int tripId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -115,7 +115,7 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
-            
+            return trip;
         }
 
     
@@ -217,6 +217,50 @@ namespace GettingReal
             }
         }
 
+        public void insertDeposit(string answer, int ID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("UpdateDepositeStatus", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@DepositeStatus", answer));
+                    cmd1.Parameters.Add(new SqlParameter("@TripCustomerID", ID));
+
+                    cmd1.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
+        public void insertBalance(string answer, int ID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("UpdateBalanceStatus", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@balanceStatus", answer));
+                    cmd1.Parameters.Add(new SqlParameter("@TripCustomerID", ID));
+
+                    cmd1.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+        }
+
+
+
         public void InsertTripCompanion(string firstName, string lastName,  int customerReferenceID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -253,19 +297,17 @@ namespace GettingReal
 
                     SqlDataReader reader = cmd1.ExecuteReader();
 
+
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-
                             string TripName = reader["TripName"].ToString();
                             string TripDate = reader["TripDate"].ToString();
 
 
                             tripRepo.CreateTrip(TripName, TripDate);
                         }
-
-
                     }
 
                 }
