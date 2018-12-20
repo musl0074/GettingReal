@@ -8,18 +8,18 @@ namespace TripLibrary
 {
     public class TripCustomer : IPersonalInformation, IContactInformation, ITripInformation, IPassportInformation
     {
-        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string StreetName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string StreetNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string CityName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string ZipCode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string PhoneNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string RoomType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string AirportName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string PassportNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string DateOfIssue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string StreetName { get; set; }
+        public string StreetNumber { get; set; }
+        public string CityName { get; set; }
+        public string ZipCode { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string RoomType { get; set; }
+        public string AirportName { get; set; }
+        public string PassportNumber { get; set; }
+        public string DateOfIssue { get; set; }
         public string DateOfBirth { get; set; }
         public string Id { get; set; }
 

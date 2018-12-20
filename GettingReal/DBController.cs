@@ -75,7 +75,7 @@ namespace GettingReal
         }
 
 
-        public Trip SpPrintList(int tripId)
+        public void SpPrintList(int tripId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -115,7 +115,7 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
-            return trip;
+            
         }
 
     
@@ -143,7 +143,6 @@ namespace GettingReal
                             string adress = reader["CustomerAdress"].ToString();
                             string contactInfo = reader["CustomerContactInfo"].ToString();
                             
-                            
                             trip.CreateTripCustomers(customerId, name, adress, contactInfo);
                         }
                     }
@@ -154,7 +153,6 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
-
             return trip;
         }
 
