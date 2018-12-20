@@ -71,8 +71,8 @@ namespace GettingReal
             Console.WriteLine();
             string collums = "|    Fulde navn    ||   Lufthavn   ||  Værelsestype  || Depositum || Restbeløb ||      Ledsager     |";
             Console.WriteLine(collums);
-            dbControl.SpPrintList(tripID);
-            List<TripCustomer> tripCustomers = trip.ShowTripCustomers();
+            Trip trip2 = dbControl.SpPrintList(tripID);
+            List<TripCustomer> tripCustomers = trip2.ShowTripCustomers();
             string customers = "";
             for (int i = 0; i < tripCustomers.Count; i++)
             {
@@ -91,9 +91,9 @@ namespace GettingReal
                 writer.WriteLine(collums);
                 foreach (TripCustomer tripCustomer in tripCustomers)
                 {
-                    writer.WriteLine("   " + tripCustomer.FullName + "        "
-                                 + tripCustomer.RoomType + "      " + tripCustomer.AirportName + "        " +
-                                 tripCustomer.DepositeStatus + "          " + tripCustomer.BlanceStatus + "         " + tripCustomer.Companion);
+                    writer.WriteLine("   " + tripCustomer.FullName + "        " + tripCustomer.RoomType + 
+                                    "      " + tripCustomer.AirportName + "        " + tripCustomer.DepositeStatus + 
+                                    "          " + tripCustomer.BlanceStatus + "         " + tripCustomer.Companion);  
                 }
                 
             }
@@ -102,6 +102,16 @@ namespace GettingReal
         public void DeleteTripList()
         {
             dbControl.DeleteTrips();
+        }
+
+        public void Deposit(string answer, int ID)
+        {
+            dbControl.insertDeposit(answer, ID);
+        }
+
+        public void Balance(string answer, int ID)
+        {
+            dbControl.insertBalance(answer, ID);
         }
     }
 }

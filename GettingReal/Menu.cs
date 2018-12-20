@@ -241,6 +241,8 @@ namespace GettingReal
                 Console.WriteLine();
                 Console.WriteLine("1. indtast Pas informationer");
                 Console.WriteLine("2. opret ledsager");
+                Console.WriteLine("3. Ret depositum");
+                Console.WriteLine("4. Ret restbeløb");
                 Console.WriteLine("0. Gå tilbage til menuen");
                 string input = GetUserChoice();
 
@@ -278,6 +280,28 @@ namespace GettingReal
                         Console.WriteLine("Indtast efternavn på ledsager: ");
                         string companionLastName = Console.ReadLine();
                         control.CreateTripCompanion(companionFirstName, companionLastName, customerReferenceID);
+                        Console.WriteLine("Tryk 'Enter' for at fortsætte.");
+                        Console.ReadLine();
+                        break;
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine(title);
+                        Console.WriteLine();
+                        Console.WriteLine("--- Ret Depositum ---");
+                        Console.Write("Er depositum betalt? (Ja/Nej)");
+                        string answer = Console.ReadLine();
+                        control.Deposit(answer, customerReferenceID);
+                        Console.WriteLine("Tryk 'Enter' for at fortsætte.");
+                        Console.ReadLine();
+                        break;
+                    case "4":
+                        Console.Clear();
+                        Console.WriteLine(title);
+                        Console.WriteLine();
+                        Console.WriteLine("--- Ret Restbeløb ---");
+                        Console.Write("Er restbeløb betalt? (Ja/Nej)");
+                        string answer2 = Console.ReadLine();
+                        control.Balance(answer2, customerReferenceID);
                         Console.WriteLine("Tryk 'Enter' for at fortsætte.");
                         Console.ReadLine();
                         break;
@@ -329,6 +353,7 @@ namespace GettingReal
             string input = Console.ReadLine();
             int tripId = Convert.ToInt32(input);
             Console.Clear();
+            control.DeleteTripList();
             control.SpPrintList(tripId);
 
             Console.Read();
