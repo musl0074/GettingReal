@@ -19,7 +19,7 @@ namespace TripLibrary
         public void CreateTrip(string tripName, string tripDate)
         {
             Trip t = new Trip(tripName, tripDate);
-            trips.Add(t);
+            trips.Add(t);   
         }
 
         public Trip GetTrip(string tripName, string tripDate)
