@@ -10,7 +10,7 @@ namespace GettingReal
     public class Controller
     {
         private DBController dbControl = new DBController();
-        private TripRepository tripRepo = new TripRepository();
+        
 
         public void CreateTrip(string tripName, string tripDate)
         {
@@ -65,21 +65,21 @@ namespace GettingReal
             }
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("|    Fulde navn    ||      Ledsager     ||  Værelsestype  ||   Lufthavn   || Depositum || Restbeløb |");
+            string collums = "|    Fulde navn    ||      Ledsager     ||  Værelsestype  ||   Lufthavn   || Depositum || Restbeløb |";
+            Console.WriteLine(collums);
             Trip trip = dbControl.SpPrintList(tripID);
             List<TripCustomer> tripCustomers = trip.ShowTripCustomers();
             for (int i = 0; i < tripCustomers.Count; i++)
             {
-                Console.WriteLine("  " + tripCustomers[i].FullName + "    " + tripCustomers[i].Companion + "   " + tripCustomers[i].RoomType
-                + "   " + tripCustomers[i].AirportName + "      " + tripCustomers[i].DepositeStatus + "          " + tripCustomers[i].BlanceStatus);
+                Console.WriteLine("  " + tripCustomers[i].FullName + "    " + tripCustomers[i].Companion + "   " 
+                                 + tripCustomers[i].RoomType + "   " + tripCustomers[i].AirportName + "      " + 
+                                 tripCustomers[i].DepositeStatus + "          " + tripCustomers[i].BlanceStatus);
             }
         }
 
         public void DeleteTripList()
         {
-            tripRepo.DeleteTripList();
+            dbControl.DeleteTrips();
         }
-
-
     }
 }

@@ -122,7 +122,6 @@ namespace GettingReal
 
         public Trip ShowTripCustomers (int Id)
         {
-            Trip placeholderTrip = new Trip();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -145,7 +144,7 @@ namespace GettingReal
                             string contactInfo = reader["CustomerContactInfo"].ToString();
                             
                             
-                            placeholderTrip.CreateTripCustomers(customerId, name, adress, contactInfo);
+                            trip.CreateTripCustomers(customerId, name, adress, contactInfo);
                         }
                     }
 
@@ -193,7 +192,8 @@ namespace GettingReal
             return tripRepo;
         }
 
-        public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
+        public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, 
+                                                string expireDate, string dateOfBirth, int customerPassID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -280,5 +280,9 @@ namespace GettingReal
             return tripRepo;
         }
 
+        public void DeleteTrips()
+        {
+            tripRepo.DeleteTripList();
+        }
     }
 }

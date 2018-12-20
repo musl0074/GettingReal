@@ -39,17 +39,6 @@ namespace TripLibrary
             return trips;
         }
 
-
-
-        /*
-        public List<TripCustomer> ShowTripCustomers (string id, string fullName, string addressInformation, string contactInformation)
-        {
-            Trip trip = new Trip();
-            trip.ShowTripCustomers();
-        }
-        */
-
-
         public void DeleteTripList()
         {
           
