@@ -160,7 +160,7 @@ namespace GettingReal
             Console.WriteLine("Tryk 'Enter' for at komme tilbage til menuen");
             Console.Read();
         }
-
+        
         private void CreateTripCustomer()
         {
             Console.WriteLine();
