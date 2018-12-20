@@ -142,6 +142,7 @@ namespace GettingReal
 
         private string GetUserChoice()
         {
+            
             Console.WriteLine();
             Console.Write("Indtast dit valg: ");
             return Console.ReadLine();
@@ -165,6 +166,7 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Liste over rejser.");
             Console.WriteLine();
+            control.DeleteTripList();
             control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Vælg rejse du vil tilføje kunde til: ");
@@ -218,6 +220,7 @@ namespace GettingReal
             Console.WriteLine();
             Console.WriteLine("Vælg rejse fra listen over rejser.");
             Console.WriteLine();
+            control.DeleteTripList();
             control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Indtast id på rejse: ");
@@ -319,6 +322,7 @@ namespace GettingReal
         {
             Console.WriteLine("Vælg rejse fra listen over rejser.");
             Console.WriteLine();
+            control.DeleteTripList();
             control.ShowTrips();
             Console.WriteLine();
             Console.WriteLine("Indtast id på rejse: ");

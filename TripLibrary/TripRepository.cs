@@ -8,7 +8,8 @@ namespace TripLibrary
 {
     public class TripRepository
     {
-        public List<Trip> trips = new List<Trip>();
+        private List<Trip> trips = new List<Trip>();
+        private Trip trip = new Trip();
 
         public void CreateTrips(string id, string tripName, string tripDate)
         {
@@ -19,7 +20,7 @@ namespace TripLibrary
         public void CreateTrip(string tripName, string tripDate)
         {
             Trip t = new Trip(tripName, tripDate);
-            trips.Add(t);   
+            trip = t;
         }
 
         public Trip GetTrip(string tripName, string tripDate)
@@ -39,16 +40,10 @@ namespace TripLibrary
             return trips;
         }
 
-
-
-        /*
-        public List<TripCustomer> ShowTripCustomers (string id, string fullName, string addressInformation, string contactInformation)
+        public Trip ShowTrip()
         {
-            Trip trip = new Trip();
-            trip.ShowTripCustomers();
+            return trip;
         }
-        */
-
 
         public void DeleteTripList()
         {

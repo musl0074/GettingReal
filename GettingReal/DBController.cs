@@ -75,7 +75,7 @@ namespace GettingReal
         }
 
 
-        public Trip SpPrintList(int tripId)
+        public void SpPrintList(int tripId)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -115,14 +115,13 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
-            return trip;
+            
         }
 
     
 
         public Trip ShowTripCustomers (int Id)
         {
-            
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -144,7 +143,6 @@ namespace GettingReal
                             string adress = reader["CustomerAdress"].ToString();
                             string contactInfo = reader["CustomerContactInfo"].ToString();
                             
-                            
                             trip.CreateTripCustomers(customerId, name, adress, contactInfo);
                         }
                     }
@@ -155,7 +153,6 @@ namespace GettingReal
                     Console.WriteLine("Ups" + e.Message);
                 }
             }
-
             return trip;
         }
 
@@ -193,7 +190,8 @@ namespace GettingReal
             return tripRepo;
         }
 
-        public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
+        public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, 
+                                                string expireDate, string dateOfBirth, int customerPassID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -280,5 +278,9 @@ namespace GettingReal
             return tripRepo;
         }
 
+        public void DeleteTrips()
+        {
+            tripRepo.DeleteTripList();
+        }
     }
 }
