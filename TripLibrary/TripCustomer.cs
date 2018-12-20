@@ -21,6 +21,8 @@ namespace TripLibrary
         public string PassportNumber { get; set; }
         public string DateOfIssue { get; set; }
         public string DateOfBirth { get; set; }
+        public string ExpiredDate { get; set; }
+        
         public string Id { get; set; }
 
         // Properties to read from Database
@@ -63,6 +65,15 @@ namespace TripLibrary
             this.AirportName = airportName;
             this.DepositeStatus = depositeStatus;
             this.BlanceStatus = balanceStatus;
+        }
+
+        public TripCustomer(string fullName, string passportNumber, string dateOfIssue, string expiredDate, string dateOfBirth)
+        {
+            this.FullName = fullName;
+            this.PassportNumber = passportNumber;
+            this.DateOfIssue = dateOfIssue;
+            this.ExpiredDate = expiredDate;
+            this.DateOfBirth = dateOfBirth;
         }
     }
 

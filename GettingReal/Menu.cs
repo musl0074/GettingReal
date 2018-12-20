@@ -111,6 +111,7 @@ namespace GettingReal
                 Console.WriteLine("2. Opdater Kunde");
                 Console.WriteLine("3. Vis tilmeldte kunder");
                 Console.WriteLine("4. Print liste over tilmeldte kunder");
+                Console.WriteLine("5. Print pasinformation over tilmeldte kunder");
                 Console.WriteLine("0. Gå tilbage til menu");
                 string input = GetUserChoice();
 
@@ -129,6 +130,9 @@ namespace GettingReal
                         break;
                     case "4":
                         PrintOutTrip();
+                        break;
+                    case "5":
+                        PrintOutPassInfo();
                         break;
                     case "0":
                         Show();
@@ -253,10 +257,6 @@ namespace GettingReal
                         Console.WriteLine(title);
                         Console.WriteLine();
                         Console.WriteLine("--- Opdater Pas Informationer ---");
-                        Console.Write("Indtast Fornavn: ");
-                        string firstName = Console.ReadLine();
-                        Console.Write("Indtast Efternavn: ");
-                        string lastName = Console.ReadLine();
                         Console.Write("Indtast passnummer: ");                       
                         string passportNumber = Console.ReadLine();
                         Console.Write("Indtast udstedsdato: ");
@@ -265,7 +265,7 @@ namespace GettingReal
                         string expireDate = Console.ReadLine();
                         Console.Write("Indtast fødseldagsdato (--/--/----/): ");
                         string dateOfBirth = Console.ReadLine();
-                        control.CreatePassport(firstName, lastName, passportNumber, dateOfIssue, expireDate, dateOfBirth, customerReferenceID);
+                        control.CreatePassport(passportNumber, dateOfIssue, expireDate, dateOfBirth, customerReferenceID);
                         Console.WriteLine("Tryk 'Enter' for at komme at fortsætte.");
                         Console.ReadLine();
                         break;
@@ -353,8 +353,25 @@ namespace GettingReal
             string input = Console.ReadLine();
             int tripId = Convert.ToInt32(input);
             Console.Clear();
-            control.DeleteTripList();
+            control.DeleteTripCustomers();
             control.SpPrintList(tripId);
+
+            Console.Read();
+        }
+
+        public void PrintOutPassInfo()
+        {
+            Console.WriteLine("Vælg rejse fra listen over rejser.");
+            Console.WriteLine();
+            control.DeleteTripList();
+            control.ShowTrips();
+            Console.WriteLine();
+            Console.WriteLine("Indtast id på rejse: ");
+            string input = Console.ReadLine();
+            int tripId = Convert.ToInt32(input);
+            Console.Clear();
+            control.DeleteTripCustomers();
+            control.spPrintPassInfo(tripId);
 
             Console.Read();
         }

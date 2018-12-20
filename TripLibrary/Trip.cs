@@ -38,9 +38,14 @@ namespace TripLibrary
         {
             TripCustomer tripCustomer = new TripCustomer(id, fullName, addressInformation, contactInformation);
             tripCustomers.Add(tripCustomer);
-
-
         }
+
+        public void CreateTripCustomers(string fullName, string PassportNumber, string DateOfIssue, string PassportExpireDate, string DateOfBirth)
+        {
+            TripCustomer tripCustomer = new TripCustomer(fullName, PassportNumber, DateOfIssue, PassportExpireDate, DateOfBirth);
+            tripCustomers.Add(tripCustomer);
+        }
+
         public void CreateTripCustomers (string fullName, string companion, string roomType, string airportName, string depositeStatus, string balanceStatus)
         {
             TripCustomer tripCustomer = new TripCustomer(fullName, companion, roomType, airportName, depositeStatus, balanceStatus);
@@ -51,6 +56,11 @@ namespace TripLibrary
         public List<TripCustomer> ShowTripCustomers ()
         {
             return tripCustomers;
+        }
+
+        public void DeleteTripCustomers()
+        {
+            tripCustomers.Clear();
         }
     }
 }

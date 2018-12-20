@@ -45,14 +45,14 @@ namespace GettingReal
             }
         }
 
-        public void CreatePassport(string firstName, string lastName, string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
+        public void CreatePassport(string passportNumber, string dateOfIssue, string expireDate, string dateOfBirth, int customerPassID)
         {
             string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             using (StreamWriter writer = new StreamWriter(Path.Combine(myDocPath, "KundeInformation.txt")))
             {
                 writer.WriteLine("bap min lange herr");
             }
-            dbControl.InsertTripCustomerPassport(firstName, lastName, passportNumber, dateOfIssue, expireDate, dateOfBirth, customerPassID);
+            dbControl.InsertTripCustomerPassport(passportNumber, dateOfIssue, expireDate, dateOfBirth, customerPassID);
         }
 
         public void CreateTripCompanion(string companionFirstName, string companionLastName, int customerReferenceID)
@@ -112,6 +112,49 @@ namespace GettingReal
         public void Balance(string answer, int ID)
         {
             dbControl.insertBalance(answer, ID);
+        }
+
+        public void spPrintPassInfo(int ID)
+        {
+            TripRepository updatedTripRepo = dbControl.ShowTrip(ID);
+            Trip trip = updatedTripRepo.ShowTrip();
+            string tripName = trip.Name + " " + trip.Date;
+            Console.WriteLine(tripName);
+            Console.WriteLine();
+            Console.WriteLine();
+            string collums = "|   Fulde navn   ||  Passport Number  || Date of issue || Expire date || Date of birth |";
+            Console.WriteLine(collums);
+            Trip trip2 = dbControl.spPrintPassport(ID);
+            List<TripCustomer> tripCustomers = trip2.ShowTripCustomers();
+            string customers = "";
+            for (int i = 0; i < tripCustomers.Count; i++)
+            {
+                customers += "   " + tripCustomers[i].FullName + "          "
+                                 + tripCustomers[i].PassportNumber + "         " + tripCustomers[i].DateOfIssue + "       " +
+                                 tripCustomers[i].ExpiredDate + "     " + tripCustomers[i].DateOfBirth + "\n";
+            }
+            Console.WriteLine(customers);
+            string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            using (StreamWriter writer = new StreamWriter(Path.Combine(myDocPath, "PasInformation.txt")))
+            {
+                writer.WriteLine(tripName);
+                writer.WriteLine();
+                writer.WriteLine();
+                writer.WriteLine(collums);
+                foreach (TripCustomer tripCustomer in tripCustomers)
+                {
+                    writer.WriteLine("   " + tripCustomer.FullName + "          "
+                                 + tripCustomer.PassportNumber + "         " + tripCustomer.DateOfIssue + "       " +
+                                 tripCustomer.ExpiredDate + "     " + tripCustomer.DateOfBirth);
+                }
+
+            }
+        }
+
+        public void DeleteTripCustomers()
+        {
+            dbControl.DeleteTripCustomers();
         }
     }
 }

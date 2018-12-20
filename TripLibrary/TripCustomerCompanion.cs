@@ -18,5 +18,7 @@ namespace TripLibrary
         public string PassportNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string DateOfIssue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string DateOfBirth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public string ExpiredDate { get; set; }
     }
 }

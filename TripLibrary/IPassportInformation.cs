@@ -11,5 +11,6 @@ namespace TripLibrary
         string PassportNumber { get; set; }
         string DateOfIssue { get; set; }
         string DateOfBirth { get; set; }
+        string ExpiredDate { get; set; }
     }
 }
