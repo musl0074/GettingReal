@@ -8,19 +8,17 @@ namespace TripLibrary
 {
     public class TripCustomerCompanion : IPersonalInformation, IPassportInformation
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string StreetName { get; set; }
-        public string StreetNumber { get; set; }
-        public string CityName { get; set;}
-        public string ZipCode { get; set; }
+        public string FirstName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string LastName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string StreetName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string StreetNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string CityName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string ZipCode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public string PassportNumber { get; set; }
-        public string ExpireDate { get; set; }
-        public string DateOfIssue { get; set; }
-        public string DateOfBirth { get; set; }
-        
+        public string PassportNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string DateOfIssue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string DateOfBirth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public string ExpiredDate { get; set; }
     }
-
-    
 }

@@ -190,7 +190,7 @@ namespace GettingReal
             return tripRepo;
         }
 
-        public void InsertTripCustomerPassport(string firstName, string lastName, string passportNumber, string dateOfIssue, 
+        public void InsertTripCustomerPassport(string passportNumber, string dateOfIssue, 
                                                 string expireDate, string dateOfBirth, int customerPassID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -201,8 +201,6 @@ namespace GettingReal
                     SqlCommand cmd1 = new SqlCommand("spInsertTrip_Passport", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
                     cmd1.Parameters.Add(new SqlParameter("@PassportNumber", passportNumber));
-                    cmd1.Parameters.Add(new SqlParameter("@FirstName", firstName));
-                    cmd1.Parameters.Add(new SqlParameter("@LastName", lastName));
                     cmd1.Parameters.Add(new SqlParameter("@DateOfIssue", dateOfIssue));
                     cmd1.Parameters.Add(new SqlParameter("@PassportExpireDate", expireDate));
                     cmd1.Parameters.Add(new SqlParameter("@DateOfBirth", dateOfBirth));
@@ -258,6 +256,50 @@ namespace GettingReal
                 }
             }
         }
+
+        public Trip spPrintPassport(int ID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("ShowPassInformation", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+                    cmd1.Parameters.Add(new SqlParameter("@TripID", ID));
+
+                    SqlDataReader reader = cmd1.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            string FullName = reader["FullName"].ToString();
+                            string PassportNumber = reader["PassportNumber"].ToString();
+                            string DateOfIssue = reader["DateOfIssue"].ToString();
+                            string PassportExpireDate = reader["PassportExpireDate"].ToString();
+                            string DateOfBirth = reader["DateOfBirth"].ToString();
+
+                            trip.CreateTripCustomers(FullName, PassportNumber, DateOfIssue, PassportExpireDate, DateOfBirth);
+
+
+                        }
+
+
+                    }
+
+                }
+
+                catch (SqlException e)
+                {
+                    Console.WriteLine("Ups" + e.Message);
+                }
+            }
+            return trip;
+        }
+
+
 
 
 
@@ -323,6 +365,11 @@ namespace GettingReal
         public void DeleteTrips()
         {
             tripRepo.DeleteTripList();
+        }
+
+        public void DeleteTripCustomers()
+        {
+            trip.DeleteTripCustomers();
         }
     }
 }
