@@ -26,7 +26,7 @@ namespace TripLibrary
             this.TripName = tripName;
             this.TripDate = tripDate;
         }
-
+        
         public Trip (string tripName, string tripDate)
         {
             TripName = tripName;
