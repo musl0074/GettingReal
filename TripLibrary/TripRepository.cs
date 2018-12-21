@@ -27,7 +27,7 @@ namespace TripLibrary
         {
             for (int i = 0; i < trips.Count; i++)
             {
-                if (trips[i].Name == tripName && trips[i].Date == tripDate)
+                if (trips[i].TripName == tripName && trips[i].TripDate == tripDate)
                 {
                     return trips[i];
                 }

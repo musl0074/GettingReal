@@ -16,10 +16,10 @@ namespace GettingReal
         private Trip trip = new Trip();
         private static string connectionString = "Server=EALSQL1.eal.local; Database= B_DB06_2018; User Id=B_STUDENT06; Password=B_OPENDB06;";
 
-        public void InsertTrip(string tripName, string date)
+        public void InsertTrip(string tripName, string tripDate)
         {
 
-            Trip newTrip = new Trip(tripName, date);
+            Trip newTrip = new Trip(tripName, tripDate);
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -28,8 +28,8 @@ namespace GettingReal
                     con.Open();
                     SqlCommand cmd1 = new SqlCommand("spInsertTrip", con);
                     cmd1.CommandType = CommandType.StoredProcedure;
-                    cmd1.Parameters.Add(new SqlParameter("@TripName", newTrip.Name));
-                    cmd1.Parameters.Add(new SqlParameter("@TripDate", newTrip.Date));
+                    cmd1.Parameters.Add(new SqlParameter("@TripName", newTrip.TripName));
+                    cmd1.Parameters.Add(new SqlParameter("@TripDate", newTrip.TripDate));
 
                     cmd1.ExecuteNonQuery();
                 }
@@ -217,7 +217,7 @@ namespace GettingReal
             }
         }
 
-        public void insertDeposit(string answer, int ID)
+        public void InsertDeposit(string answer, int ID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -238,7 +238,7 @@ namespace GettingReal
             }
         }
 
-        public void insertBalance(string answer, int ID)
+        public void InsertBalance(string answer, int ID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {

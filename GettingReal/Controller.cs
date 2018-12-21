@@ -18,10 +18,10 @@ namespace GettingReal
             dbControl.InsertTrip(tripName, tripDate);
         }
 
-        public void CreateTripCustomer(string firstName, string lastName, string streetName, string streetNumber, string city, string zipCode,
-                                       string phoneNumber, string email, string roomType, string airport, int Id)
+        public void CreateTripCustomer(string firstName, string lastName, string streetName, string streetNumber, string cityName, string zipCode,
+                                       string phoneNumber, string email, string roomType, string airportName, int id)
         {  
-            dbControl.InsertTripCustomer(firstName, lastName, streetName, streetNumber, city, zipCode, phoneNumber, email, roomType, airport, Id);
+            dbControl.InsertTripCustomer(firstName, lastName, streetName, streetNumber, cityName, zipCode, phoneNumber, email, roomType, airportName, id);
         }
         public void ShowTrips()
         {
@@ -29,7 +29,7 @@ namespace GettingReal
             List<Trip> trips = updatedTripRepo.ShowTrips();
             for (int i = 0; i < trips.Count; i++)
             {
-                Console.WriteLine(trips[i].Id + ". " + trips[i].Name + " " + trips[i].Date);
+                Console.WriteLine(trips[i].Id + ". " + trips[i].TripName + " " + trips[i].TripDate);
             }
         }
 
@@ -65,7 +65,7 @@ namespace GettingReal
         {
             TripRepository updatedTripRepo = dbControl.ShowTrip(tripID);
             Trip trip = updatedTripRepo.ShowTrip();
-            string tripName = trip.Name + " " + trip.Date;
+            string tripName = trip.TripName + " " + trip.TripDate;
             Console.WriteLine(tripName);
             Console.WriteLine();
             Console.WriteLine();
@@ -106,12 +106,12 @@ namespace GettingReal
 
         public void Deposit(string answer, int ID)
         {
-            dbControl.insertDeposit(answer, ID);
+            dbControl.InsertDeposit(answer, ID);
         }
 
         public void Balance(string answer, int ID)
         {
-            dbControl.insertBalance(answer, ID);
+            dbControl.InsertBalance(answer, ID);
         }
     }
 }

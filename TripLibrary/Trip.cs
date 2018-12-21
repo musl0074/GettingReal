@@ -9,10 +9,11 @@ namespace TripLibrary
     public class Trip
     {
         private List<TripCustomer> tripCustomers = new List<TripCustomer>();
+        
 
+        public string TripName { get; set; }
+        public string TripDate { get; set; }
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Date { get; set; }
 
 
         public Trip()
@@ -20,17 +21,17 @@ namespace TripLibrary
 
         }
 
-        public Trip (string id, string name, string date)
+        public Trip (string id, string tripName, string tripDate)
         {
             this.Id = id;
-            this.Name = name;
-            this.Date = date;
+            this.TripName = tripName;
+            this.TripDate = tripDate;
         }
 
-        public Trip (string name, string date)
+        public Trip (string tripName, string tripDate)
         {
-            Name = name;
-            Date = date;
+            TripName = tripName;
+            TripDate = tripDate;
         }
 
         
@@ -41,9 +42,9 @@ namespace TripLibrary
 
 
         }
-        public void CreateTripCustomers (string fullName, string companion, string roomType, string airportName, string depositeStatus, string balanceStatus)
+        public void CreateTripCustomers (string fullName, string companion, string roomType, string airportName, string depositStatus, string balanceStatus)
         {
-            TripCustomer tripCustomer = new TripCustomer(fullName, companion, roomType, airportName, depositeStatus, balanceStatus);
+            TripCustomer tripCustomer = new TripCustomer(fullName, companion, roomType, airportName, depositStatus, balanceStatus);
             tripCustomers.Add(tripCustomer);
         }
 

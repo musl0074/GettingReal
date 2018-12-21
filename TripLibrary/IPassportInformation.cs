@@ -9,6 +9,7 @@ namespace TripLibrary
     interface IPassportInformation
     {
         string PassportNumber { get; set; }
+        string ExpireDate { get; set; }
         string DateOfIssue { get; set; }
         string DateOfBirth { get; set; }
     }

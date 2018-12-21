@@ -19,6 +19,7 @@ namespace TripLibrary
         public string RoomType { get; set; }
         public string AirportName { get; set; }
         public string PassportNumber { get; set; }
+        public string ExpireDate { get; set; }
         public string DateOfIssue { get; set; }
         public string DateOfBirth { get; set; }
         public string Id { get; set; }
@@ -55,13 +56,13 @@ namespace TripLibrary
             ContactInformation = contactInformation;
         }
 
-        public TripCustomer(string fullName, string companion, string roomtype, string airportName, string depositeStatus, string balanceStatus)
+        public TripCustomer(string fullName, string companion, string roomtype, string airportName, string depositStatus, string balanceStatus)
         {
             this.FullName = fullName;
             this.Companion = companion;
             this.RoomType = roomtype;
             this.AirportName = airportName;
-            this.DepositeStatus = depositeStatus;
+            this.DepositeStatus = depositStatus;
             this.BlanceStatus = balanceStatus;
         }
     }
