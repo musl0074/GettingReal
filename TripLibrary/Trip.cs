@@ -20,17 +20,17 @@ namespace TripLibrary
 
         }
 
-        public Trip (string id, string name, string date)
+        public Trip (string id, string tripName, string tripDate)
         {
             this.Id = id;
-            this.TripName = name;
-            this.TripDate = date;
+            this.TripName = tripName;
+            this.TripDate = tripDate;
         }
 
-        public Trip (string name, string date)
+        public Trip (string tripName, string tripDate)
         {
-            TripName = name;
-            TripDate = date;
+            TripName = tripName;
+            TripDate = tripDate;
         }
 
         
