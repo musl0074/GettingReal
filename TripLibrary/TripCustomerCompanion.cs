@@ -16,9 +16,9 @@ namespace TripLibrary
         public string ZipCode { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public string PassportNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string ExpireDate { get; set; }
         public string DateOfIssue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string DateOfBirth { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         public string ExpiredDate { get; set; }
     }
 }

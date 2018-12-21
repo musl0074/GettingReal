@@ -118,7 +118,7 @@ namespace GettingReal
         {
             TripRepository updatedTripRepo = dbControl.ShowTrip(ID);
             Trip trip = updatedTripRepo.ShowTrip();
-            string tripName = trip.Name + " " + trip.Date;
+            string tripName = trip.TripName + " " + trip.TripDate;
             Console.WriteLine(tripName);
             Console.WriteLine();
             Console.WriteLine();

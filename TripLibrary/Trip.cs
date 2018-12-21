@@ -11,8 +11,8 @@ namespace TripLibrary
         private List<TripCustomer> tripCustomers = new List<TripCustomer>();
 
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Date { get; set; }
+        public string TripName { get; set; }
+        public string TripDate { get; set; }
 
 
         public Trip()
@@ -23,14 +23,14 @@ namespace TripLibrary
         public Trip (string id, string name, string date)
         {
             this.Id = id;
-            this.Name = name;
-            this.Date = date;
+            this.TripName = name;
+            this.TripDate = date;
         }
 
         public Trip (string name, string date)
         {
-            Name = name;
-            Date = date;
+            TripName = name;
+            TripDate = date;
         }
 
         
