@@ -50,7 +50,7 @@ namespace GettingReal
             string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             using (StreamWriter writer = new StreamWriter(Path.Combine(myDocPath, "KundeInformation.txt")))
             {
-                writer.WriteLine("bap min lange herr");
+                writer.WriteLine("placeholder");
             }
             dbControl.InsertTripCustomerPassport(passportNumber, dateOfIssue, expireDate, dateOfBirth, customerPassID);
         }
@@ -114,7 +114,7 @@ namespace GettingReal
             dbControl.InsertBalance(answer, ID);
         }
 
-        public void spPrintPassInfo(int ID)
+        public void SpPrintPassInfo(int ID)
         {
             TripRepository updatedTripRepo = dbControl.ShowTrip(ID);
             Trip trip = updatedTripRepo.ShowTrip();
@@ -124,7 +124,7 @@ namespace GettingReal
             Console.WriteLine();
             string collums = "|   Fulde navn   ||  Passport Number  || Date of issue || Expire date || Date of birth |";
             Console.WriteLine(collums);
-            Trip trip2 = dbControl.spPrintPassport(ID);
+            Trip trip2 = dbControl.SpPrintPassport(ID);
             List<TripCustomer> tripCustomers = trip2.ShowTripCustomers();
             string customers = "";
             for (int i = 0; i < tripCustomers.Count; i++)

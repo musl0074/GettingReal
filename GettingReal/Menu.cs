@@ -371,7 +371,7 @@ namespace GettingReal
             int tripId = Convert.ToInt32(input);
             Console.Clear();
             control.DeleteTripCustomers();
-            control.spPrintPassInfo(tripId);
+            control.SpPrintPassInfo(tripId);
 
             Console.Read();
         }

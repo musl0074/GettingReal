@@ -257,7 +257,7 @@ namespace GettingReal
             }
         }
 
-        public Trip spPrintPassport(int ID)
+        public Trip SpPrintPassport(int ID)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
